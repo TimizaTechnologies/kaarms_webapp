@@ -1,0 +1,18 @@
+<mat-toolbar color='primary'>
+  <span [routerLink]="['/']">Kaa RMS</span>
+  <span class="fill-remaining-space"></span>
+  <button mat-button>Tenants</button>
+  <button mat-icon-button [matMenuTriggerFor]="settingsMenu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #settingsMenu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>settings</mat-icon>
+      <span>About</span>
+    </button>
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>

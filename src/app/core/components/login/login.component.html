@@ -1,0 +1,52 @@
+<div class="row" id="login-form">
+  <h2 class="align-center">Login Required</h2>
+  <div class="six columns offset by-three">
+    <form [formGroup]="loginForm">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput placeholder="Email" formControlName="email" name="email" required>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput placeholder="Password" formControlName="password" name="password" required>
+      </mat-form-field>
+      <button mat-stroked-button (click)="login()" [disabled]="!loginForm.valid">{{verifyingCredentials ? "Thinking..." : "Login"}}</button>
+    </form>
+  </div>
+</div>
+
+<!--
+<div class="displayTable">
+  <div class="displayTableCell">
+    <div class="authBlock">
+      <h3>Sign In</h3>
+      <div class="formGroup">
+        <input type="text" class="formControl" placeholder="Username" #userName required>
+      </div>
+      <div class="formGroup">
+        <input type="password" class="formControl" placeholder="Password" #userPassword required>
+      </div>
+      <!- Calling SignIn Api from AuthService ->
+<div class="formGroup">
+  <input type="button" class="btn btnPrimary" value="Log in" (click)="authService.SignIn(userName.value, userPassword.value)">
+</div>
+<div class="formGroup">
+  <span class="or"><span class="orInner">Or</span></span>
+</div>
+<!- Calling GoogleAuth Api from AuthService ->
+<div class="formGroup">
+  <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
+    <i class="fab fa-google-plus-g"></i>
+    Log in with Google
+  </button>
+</div>
+<div class="forgotPassword">
+  <span routerLink="/forgot-password">Forgot Password?</span>
+</div>
+</div>
+<div class="redirectToLogin">
+  <span>Don't have an account?<span class="redirect" routerLink="/register-user"> Sign Up</span></span>
+</div>
+</div>
+</div>
+-->

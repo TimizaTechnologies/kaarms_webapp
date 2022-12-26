@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "kaarms-d20c4": {
+      "hosting": {
+        "kaarms_webapp": [
+          "kaarms-d20c4"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "kaarms-d20c4"
+  }
+}

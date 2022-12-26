@@ -1,0 +1,31 @@
+<style>
+  mat-form-field {
+    width: 100%;
+  }
+</style>
+<h1 mat-dialog-title style="text-align: center">Create Invoice</h1>
+<div mat-dialog-content>
+  <form>
+    <mat-form-field appearance="outline">
+      <mat-label>Service</mat-label>
+      <input matInput placeholder="Service" name="service" [(ngModel)]="invoice.service">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <input matInput [matDatepicker]="due" placeholder="Due" name="due" [(ngModel)]="invoice.due">
+      <mat-datepicker-toggle matSuffix [for]="due"></mat-datepicker-toggle>
+      <mat-datepicker #due></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Value</mat-label>
+      <input matInput placeholder="Value" name="value" [(ngModel)]="invoice.value">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Notes</mat-label>
+      <textarea matInput placeholder="Notes" name="notes" [(ngModel)]="invoice.additionalNotes">Notes</textarea>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()" cdkFocusInitial>Cancel</button>
+  <button mat-button [mat-dialog-close]="invoice" [disabled]="!invoice.service">Create Invoice</button>
+</div>

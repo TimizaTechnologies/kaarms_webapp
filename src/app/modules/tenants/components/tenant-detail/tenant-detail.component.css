@@ -1,0 +1,15 @@
+mat-form-field {
+  width: 100%;
+}
+
+form {
+  padding-top: 25px;
+}
+
+table {
+  width: 100%;
+}
+
+#create-invoice {
+  margin-top: 25px;
+}

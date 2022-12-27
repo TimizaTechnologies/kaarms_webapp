@@ -1,18 +1,22 @@
 import { Injectable } from '@angular/core';
-import {Tenant} from "../models/tenant.model";
-import {Subject} from "rxjs";
+import {catchError, Observable, Subject} from "rxjs";
 import {Tenants} from "./tenants";
 import {Invoice} from "../../payments/models/invoice.model";
+import {environment} from "@envs";
+import {HttpClient} from "@angular/common/http";
+import {HttpErrorHandler} from "@shared/services/http-error-handler.service";
+import {Tenant} from "@modules/tenants/models/tenant.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TenantsService {
-
+  private tenantUrl: string = `${environment.apiUrl}tenants`;
   private tenantSubject = new Subject<Tenant>();
   private tenantsSubject = new Subject<Array<Tenant>>();
 
-  constructor() { }
+  constructor(private http: HttpClient, private eh: HttpErrorHandler) { }
+
 
   public requestTenants() {
     this.tenantsSubject.next(Tenants);
@@ -58,5 +62,35 @@ export class TenantsService {
       return cust._id == tenant._id;
     });
     updatedTenant.invoices.unshift(invoice);
+  }
+
+  createTenant(tenant: Tenant): Observable<Tenant> {
+    return this.http
+      .post<Tenant>(this.tenantUrl, tenant)
+      .pipe(catchError(this.eh.handleError));
+  }
+
+  getTenant$(id: number): Observable<Tenant> {
+    return this.http
+      .get<Tenant>(`${this.tenantUrl}/${id}`)
+      .pipe(catchError(this.eh.handleError));
+  }
+
+  getTenants$(): Observable<Tenant[]> {
+    return this.http
+      .get<Tenant[]>(`${this.tenantUrl}`)
+      .pipe(catchError(this.eh.handleError));
+  }
+
+  updateTenant(id: number, asset: Partial<Tenant>): Observable<Tenant> {
+    return this.http
+      .patch<Tenant>(`${this.tenantUrl}/${id}`, asset)
+      .pipe(catchError(this.eh.handleError));
+  }
+
+  deleteTenant$(id: number): Observable<Tenant> {
+    return this.http
+      .delete<Tenant>(`${this.tenantUrl}/${id}`)
+      .pipe(catchError(this.eh.handleError));
   }
 }

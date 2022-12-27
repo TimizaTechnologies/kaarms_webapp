@@ -6,6 +6,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import {MaterialModule} from "../material/material.module";
+import { FluidHeightDirective } from './directives/fluid-height.directive';
 
 
 
@@ -14,7 +15,8 @@ import {MaterialModule} from "../material/material.module";
     SearchComponent,
     DynamicFormInputComponent,
     DynamicFormComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    FluidHeightDirective
   ],
     imports: [
         CommonModule,

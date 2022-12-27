@@ -6,6 +6,7 @@ import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {Router} from "@angular/router";
 import {AngularFirestore, AngularFirestoreDocument} from "@angular/fire/compat/firestore";
 import {User} from "@modules/users/models/user.model";
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,8 @@ export class AuthService {
     public afs: AngularFirestore, // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
-    public ngZone: NgZone // NgZone service to remove outside scope warning
+    public ngZone: NgZone, // NgZone service to remove outside scope warning
+    private http: HttpClient
   ) {
     /* Saving user data in localstorage when
     logged in and setting up null when logged out */
@@ -126,6 +128,42 @@ export class AuthService {
       merge: true,
     });
   }
+
+  // Firebase SignInWithPopup
+  OAuthProvider(provider) {
+    return this.afAuth.signInWithPopup(provider)
+      .then((res) => {
+        this.ngZone.run(() => {
+          this.router.navigate(['dashboard']);
+        })
+      }).catch((error) => {
+        window.alert(error)
+      })
+  }
+  // Firebase Google Sign-in
+  SigninWithGoogle() {
+    return this.OAuthProvider(new auth.GoogleAuthProvider())
+      .then(res => {
+        console.log('Successfully logged in!')
+      }).catch(error => {
+        console.log(error)
+      });
+  }
+
+  sendResetPasswordLink(data: any) {
+    return this.http.post(
+      'http://127.0.0.1:8000/api/auth/change-password-request',
+      data
+    );
+  }
+
+  resetPassword(data: any) {
+    return this.http.post(
+      'http://127.0.0.1:8000/api/auth/change-password',
+      data
+    );
+  }
+
   // Sign out
   SignOut() {
     return this.afAuth.signOut().then(() => {

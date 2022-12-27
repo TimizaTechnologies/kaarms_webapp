@@ -36,7 +36,7 @@
       "@angular/core/src/metadata/*": [
         "./node_modules/@angular/core"
       ],
-      "@env": ["environments/environment"]
+      "@envs": ["environments/environment"]
     },
     "typeRoots": [
       "node_modules/@types"

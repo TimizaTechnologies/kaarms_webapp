@@ -15,12 +15,23 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { MatNativeDateModule } from "@angular/material/core";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import {MatSortModule} from "@angular/material/sort";
+import {MatBadgeModule} from "@angular/material/badge";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatListModule} from "@angular/material/list";
+import {MatGridListModule} from "@angular/material/grid-list";
+import {MatSelectModule} from "@angular/material/select";
+import {MatRadioModule} from "@angular/material/radio";
+import {MatChipsModule} from "@angular/material/chips";
+import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
 
+    MatCardModule,
+    MatChipsModule,
     MatToolbarModule,
     MatButtonModule,
     MatTableModule,
@@ -33,10 +44,19 @@ import {MatSortModule} from "@angular/material/sort";
     MatTabsModule,
     MatNativeDateModule,
     MatDialogModule,
-    MatDatepickerModule,
     MatSortModule,
+    MatBadgeModule,
+    MatSidenavModule,
+    MatListModule,
+    MatGridListModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatTooltipModule,
+    MatDatepickerModule
   ],
   exports: [
+    MatCardModule,
+    MatChipsModule,
     MatToolbarModule,
     MatButtonModule,
     MatTableModule,
@@ -49,8 +69,16 @@ import {MatSortModule} from "@angular/material/sort";
     MatTabsModule,
     MatNativeDateModule,
     MatDialogModule,
-    MatDatepickerModule,
     MatSortModule,
-  ]
+    MatBadgeModule,
+    MatSidenavModule,
+    MatListModule,
+    MatGridListModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatTooltipModule,
+    MatDatepickerModule
+  ],
+  providers: [MatDatepickerModule]
 })
 export class MaterialModule { }

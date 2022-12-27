@@ -11,6 +11,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import {CoreRoutingModule} from "@core/core-routing.module";
+import { ChangePasswordRequestComponent } from './components/change-password-request/change-password-request.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { ProfileComponent } from './components/profile/profile.component';
 // import {AppModule} from "../app.module";
 
 
@@ -24,7 +27,10 @@ import {CoreRoutingModule} from "@core/core-routing.module";
         ToolbarComponent,
         DashboardComponent,
         ForgotPasswordComponent,
-        VerifyEmailComponent
+        VerifyEmailComponent,
+        ChangePasswordRequestComponent,
+        ChangePasswordComponent,
+        ProfileComponent
     ],
     exports: [
         ToolbarComponent

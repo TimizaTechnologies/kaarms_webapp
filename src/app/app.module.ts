@@ -1,4 +1,4 @@
-import { NgModule, isDevMode } from '@angular/core';
+import {NgModule, isDevMode, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {CoreModule} from "@core/core.module";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {LoadingInterceptor} from "@shared/interceptors/loading.interceptor";
-import {environment} from "@env";
+import {environment} from "@envs";
 import {AngularFireModule} from "@angular/fire/compat";
 import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
@@ -17,6 +17,10 @@ import { providePerformance,getPerformance } from '@angular/fire/performance';
 import {AuthService} from "@core/services/auth.service";
 import {SharedModule} from "@shared/shared.module";
 import { ServiceWorkerModule } from '@angular/service-worker';
+import {ToastrModule} from "ngx-toastr";
+import {AngularFireDatabaseModule} from "@angular/fire/compat/database";
+import {AngularFireStorageModule} from "@angular/fire/compat/storage";
+import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
 
 @NgModule({
   declarations: [
@@ -27,11 +31,16 @@ import { ServiceWorkerModule } from '@angular/service-worker';
         AppRoutingModule,
         BrowserAnimationsModule,
         HttpClientModule,
+        ToastrModule.forRoot(),
 
         CoreModule,
 
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireAuthModule,
+        AngularFireAuthModule,
+        AngularFirestoreModule,
+        AngularFireStorageModule,
+        AngularFireDatabaseModule,
         provideFirebaseApp(() => initializeApp(environment.firebase)),
         provideAnalytics(() => getAnalytics()),
         provideAuth(() => getAuth()),
@@ -51,6 +60,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     },
     ScreenTrackingService,UserTrackingService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule { }

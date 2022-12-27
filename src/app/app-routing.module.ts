@@ -1,18 +1,12 @@
 import { NgModule } from '@angular/core';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
-import {RegisterComponent} from "./core/components/register/register.component";
-import {DashboardComponent} from "./core/components/dashboard/dashboard.component";
-import {LoginComponent} from "./core/components/login/login.component";
-import {ForgotPasswordComponent} from "./core/components/forgot-password/forgot-password.component";
-import {VerifyEmailComponent} from "./core/components/verify-email/verify-email.component";
-import {AuthGuard} from "./core/guards/auth.guard";
+import {PageNotFoundComponent} from "@core/components/page-not-found/page-not-found.component";
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-  { path: 'forgot-password', component: ForgotPasswordComponent },
-  { path: 'verify-email-address', component: VerifyEmailComponent },
+  {
+    path: '',
+    loadChildren: () => import('./core/core.module').then(m => m.CoreModule)
+  },
   {
     path: 'users',
     loadChildren: () => import('./modules/users/users.module').then(m => m.UsersModule)
@@ -29,7 +23,8 @@ const routes: Routes = [
     path: '',
     redirectTo: '',
     pathMatch: 'full'
-  }
+  },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

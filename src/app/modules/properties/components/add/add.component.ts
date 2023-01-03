@@ -91,7 +91,7 @@ export class AddComponent implements OnInit {
   }
   /* Date */
   formatDate(e) {
-    var convertDate = new Date(e.target.value).toISOString().substring(0, 10);
+    const convertDate = new Date(e.target.value).toISOString().substring(0, 10);
     this.bookForm.get('publication_date').setValue(convertDate, {
       onlyself: true,
     });
@@ -100,7 +100,7 @@ export class AddComponent implements OnInit {
   resetForm() {
     this.languageArray = [];
     this.bookForm.reset();
-    Object.keys(this.bookForm.controls).forEach((key) => {
+    Object.keys(this.bookForm.controls).forEach(key => {
       this.bookForm.controls[key].setErrors(null);
     });
   }

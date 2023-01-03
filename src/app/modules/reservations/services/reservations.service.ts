@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { environment } from '@env';
+import { environment } from '@environs';
 import { HttpClient } from '@angular/common/http';
 import { HttpErrorHandler } from '@shared/services/http-error-handler.service';
 import { Reservation } from '@modules/reservations/models/reservation.model';
@@ -9,7 +9,7 @@ import { catchError, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ReservationsService {
-  private reservationUrl: string = `${environment.apiUrl}reservations`;
+  private reservationUrl = `${environment.apiUrl}reservations`;
 
   constructor(private http: HttpClient, private eh: HttpErrorHandler) {}
 

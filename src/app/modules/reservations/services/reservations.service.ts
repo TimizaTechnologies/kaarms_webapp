@@ -11,7 +11,7 @@ import { catchError, Observable } from 'rxjs';
 export class ReservationsService {
   private reservationUrl = `${environment.apiUrl}reservations`;
 
-  constructor(private http: HttpClient, private eh: HttpErrorHandler) {}
+  constructor(private http: HttpClient, private eh: HttpErrorHandler) { }
 
   createReservation(reservation: Reservation): Observable<Reservation> {
     return this.http
@@ -25,7 +25,8 @@ export class ReservationsService {
       .pipe(catchError(this.eh.handleError));
   }
 
-  getReservations(): Observable<Reservation[]> {
+  // getReservations(): Observable<Reservation[]> {
+  getReservations(): any {
     return this.http
       .get<Reservation[]>(`${this.reservationUrl}`)
       .pipe(catchError(this.eh.handleError));

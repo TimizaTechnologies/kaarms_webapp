@@ -7,9 +7,9 @@ import { Property } from '../../properties/models/property.model';
  * */
 export interface Reservation {
   id: number;
-  user: User;
-  property: Property;
-  startDate: Date;
-  endDate: Date;
+  user: number;
+  property: number;
+  start_date: Date;
+  end_date: Date;
   cost: number;
 }

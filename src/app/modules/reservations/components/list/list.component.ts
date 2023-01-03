@@ -15,21 +15,21 @@ import { EditComponent } from '../edit/edit.component';
 })
 export class ListComponent implements OnInit {
   items: any[];
-  displayedColumns: string[] = ['name', 'description', 'actions'];
+  displayedColumns: string[] = ['id', 'cost', 'actions'];
   dataSource: MatTableDataSource<Reservation>;
 
   constructor(
     private myService: ReservationsService,
     private dialog: MatDialog
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.myService.getReservations().subscribe(data => {
-      this.items = data;
+      this.items = data.results;
     });
 
     this.myService.getReservations().subscribe(data => {
-      this.dataSource = new MatTableDataSource(data);
+      this.dataSource = new MatTableDataSource(data.results);
     });
   }
 

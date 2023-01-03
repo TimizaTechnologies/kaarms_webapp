@@ -1,4 +1,4 @@
-import {Reservation} from "../../reservations/models/reservation.model";
+import { Reservation } from '../../reservations/models/reservation.model';
 
 /**
  *  This table would store information about individual users of the system,
@@ -11,8 +11,8 @@ export interface User {
   password: string;
   // reservations: Reservation[];
 
-   uid?: string;
-   displayName?: string;
-   photoURL?: string;
-   emailVerified?: boolean;
+  uid?: string;
+  displayName?: string;
+  photoURL?: string;
+  emailVerified?: boolean;
 }

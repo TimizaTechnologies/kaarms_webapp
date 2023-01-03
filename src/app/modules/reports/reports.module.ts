@@ -1,19 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReportsComponent } from './reports.component';
-import {ReportsRoutingModule} from "@modules/reports/reports-routing.module";
-import {SharedModule} from "@shared/shared.module";
-
-
+import { ReportsRoutingModule } from '@modules/reports/reports-routing.module';
+import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
-  declarations: [
-    ReportsComponent
-  ],
-  imports: [
-    CommonModule,
-    ReportsRoutingModule,
-    SharedModule
-  ]
+  declarations: [ReportsComponent],
+  imports: [CommonModule, ReportsRoutingModule, SharedModule],
 })
-export class ReportsModule { }
+export class ReportsModule {}

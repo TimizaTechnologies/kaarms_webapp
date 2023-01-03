@@ -83,7 +83,7 @@
             <mat-option
               [value]="bindingType"
               *ngFor="let bindingType of BindingType"
-            >{{ bindingType }}</mat-option
+              >{{ bindingType }}</mat-option
             >
           </mat-select>
           <mat-error *ngIf="handleError('binding_type', 'required')">

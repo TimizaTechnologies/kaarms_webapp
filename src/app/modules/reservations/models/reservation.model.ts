@@ -1,5 +1,5 @@
-import {User} from "../../users/models/user.model";
-import {Property} from "../../properties/models/property.model";
+import { User } from '../../users/models/user.model';
+import { Property } from '../../properties/models/property.model';
 
 /**
  * This table would store information about reservations made by users, including the property being rented,

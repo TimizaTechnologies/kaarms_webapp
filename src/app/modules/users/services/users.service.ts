@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {catchError, Observable} from "rxjs";
-import {User} from "../models/user.model";
-import {environment} from "@envs";
-import {HttpErrorHandler} from "@shared/services/http-error-handler.service";
+import { HttpClient } from '@angular/common/http';
+import { catchError, Observable } from 'rxjs';
+import { User } from '../models/user.model';
+import { environment } from '@environs';
+import { HttpErrorHandler } from '@shared/services/http-error-handler.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UsersService {
-  private userUrl: string = `${environment.apiUrl}users`;
+  private userUrl = `${environment.apiUrl}users`;
 
-  constructor(private http: HttpClient, private eh: HttpErrorHandler) { }
+  constructor(private http: HttpClient, private eh: HttpErrorHandler) {}
 
   createUser(user: User): Observable<User> {
     return this.http

@@ -1,4 +1,4 @@
-import {Invoice} from "../../payments/models/invoice.model";
+import { Invoice } from '../../payments/models/invoice.model';
 
 export interface Tenant {
   _id: string;
@@ -6,5 +6,5 @@ export interface Tenant {
   email: string;
   phoneNumber: string;
   notes: string;
-  invoices: Array<Invoice>
+  invoices: Array<Invoice>;
 }

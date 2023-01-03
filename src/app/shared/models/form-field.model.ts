@@ -23,13 +23,13 @@ export class FormField<T> {
     } = {}
   ) {
     this.value = options.value;
-    this.key = options.key || "";
-    this.label = options.label || "";
+    this.key = options.key || '';
+    this.label = options.label || '';
     this.required = !!options.required;
-    this.validator = options.validator || "";
+    this.validator = options.validator || '';
     this.order = options.order === undefined ? 1 : options.order;
-    this.controlType = options.controlType || "";
-    this.type = options.type || "";
+    this.controlType = options.controlType || '';
+    this.type = options.type || '';
     this.options = options.options || [];
   }
 }

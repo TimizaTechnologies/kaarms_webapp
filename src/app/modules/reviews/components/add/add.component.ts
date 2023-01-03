@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import {ReviewsService} from "@modules/reviews/services/reviews.service";
+import { ReviewsService } from '@modules/reviews/services/reviews.service';
 
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
-  styleUrls: ['./add.component.css']
+  styleUrls: ['./add.component.css'],
 })
-export class AddComponent implements
-  OnInit {
+export class AddComponent implements OnInit {
   public studentForm: FormGroup;
   constructor(
     public crudApi: ReviewsService,

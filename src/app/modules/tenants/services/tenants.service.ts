@@ -1,22 +1,21 @@
 import { Injectable } from '@angular/core';
-import {catchError, Observable, Subject} from "rxjs";
-import {Tenants} from "./tenants";
-import {Invoice} from "../../payments/models/invoice.model";
-import {environment} from "@envs";
-import {HttpClient} from "@angular/common/http";
-import {HttpErrorHandler} from "@shared/services/http-error-handler.service";
-import {Tenant} from "@modules/tenants/models/tenant.model";
+import { catchError, Observable, Subject } from 'rxjs';
+import { Tenants } from './tenants';
+import { Invoice } from '../../payments/models/invoice.model';
+import { environment } from '@environs';
+import { HttpClient } from '@angular/common/http';
+import { HttpErrorHandler } from '@shared/services/http-error-handler.service';
+import { Tenant } from '@modules/tenants/models/tenant.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TenantsService {
-  private tenantUrl: string = `${environment.apiUrl}tenants`;
+  private tenantUrl = `${environment.apiUrl}tenants`;
   private tenantSubject = new Subject<Tenant>();
   private tenantsSubject = new Subject<Array<Tenant>>();
 
-  constructor(private http: HttpClient, private eh: HttpErrorHandler) { }
-
+  constructor(private http: HttpClient, private eh: HttpErrorHandler) {}
 
   public requestTenants() {
     this.tenantsSubject.next(Tenants);
@@ -26,10 +25,10 @@ export class TenantsService {
     return this.tenantsSubject.asObservable();
   }
 
-  public requestTenant(tenantId: String) {
-    let tenant = Tenants.find(cust => {
+  public requestTenant(tenantId: string) {
+    const tenant = Tenants.find(cust => {
       return cust._id == tenantId;
-    })
+    });
     this.tenantSubject.next(tenant);
   }
 
@@ -37,8 +36,8 @@ export class TenantsService {
     return this.tenantSubject.asObservable();
   }
 
-  public deleteTenant(tenantId: String): void {
-    let tenantIndex = Tenants.findIndex(cust => {
+  public deleteTenant(tenantId: string): void {
+    const tenantIndex = Tenants.findIndex(cust => {
       return cust._id == tenantId;
     });
     Tenants.splice(tenantIndex, 1);
@@ -46,7 +45,7 @@ export class TenantsService {
 
   // public saveTenant(tenant: Tenant): void {
   public saveTenant(tenant: any): void {
-    let index = Tenants.findIndex(cust => {
+    const index = Tenants.findIndex(cust => {
       return cust._id == tenant._id;
     });
     if (index != -1) {
@@ -58,7 +57,7 @@ export class TenantsService {
 
   // public addInvoice(tenant: Tenant, invoice: Invoice): void {
   public addInvoice(tenant: any, invoice: any): void {
-    let updatedTenant = Tenants.find(cust => {
+    const updatedTenant = Tenants.find(cust => {
       return cust._id == tenant._id;
     });
     updatedTenant.invoices.unshift(invoice);

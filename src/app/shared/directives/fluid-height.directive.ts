@@ -1,13 +1,19 @@
-import {AfterViewInit, Directive, ElementRef, Input, Renderer2} from '@angular/core';
-import { fromEvent } from "rxjs";
-import { debounceTime, throttleTime } from "rxjs/operators";
+import {
+  AfterViewInit,
+  Directive,
+  ElementRef,
+  Input,
+  Renderer2,
+} from '@angular/core';
+import { fromEvent } from 'rxjs';
+import { debounceTime, throttleTime } from 'rxjs/operators';
 
 @Directive({
-  selector: '[fluidHeight]'
+  selector: '[fluidHeight]',
 })
 export class FluidHeightDirective implements AfterViewInit {
   @Input() minHeight: number;
-  @Input("fluidHeight") topOffset: number;
+  @Input('fluidHeight') topOffset: number;
 
   private readonly domElement: HTMLElement;
 
@@ -15,7 +21,7 @@ export class FluidHeightDirective implements AfterViewInit {
     this.domElement = this.elementRef.nativeElement as HTMLElement;
 
     // register on window resize event
-    fromEvent(window, "resize")
+    fromEvent(window, 'resize')
       .pipe(throttleTime(500), debounceTime(500))
       .subscribe(() => this.setHeight());
   }
@@ -34,7 +40,7 @@ export class FluidHeightDirective implements AfterViewInit {
       height = this.minHeight;
     }
 
-    this.renderer.setStyle(this.domElement, "height", `${height}px`);
+    this.renderer.setStyle(this.domElement, 'height', `${height}px`);
   }
 
   private calcTopOffset(): number {

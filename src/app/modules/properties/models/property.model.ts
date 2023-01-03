@@ -1,4 +1,4 @@
-import {User} from "../../users/models/user.model";
+import { User } from '../../users/models/user.model';
 
 /**
  * Property photos: This table would store links to photos of properties, allowing users to view images of the rentals they are interested in.
@@ -25,7 +25,7 @@ export interface Book {
   $key: string;
   book_name: string;
   isbn_10: number;
-  author_name: string
+  author_name: string;
   publication_date: Date;
   binding_type: string;
   in_stock: string;

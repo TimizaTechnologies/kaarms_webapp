@@ -1,18 +1,60 @@
-import { Injectable } from '@angular/core';
 import {
-  HttpRequest,
-  HttpHandler,
+  HttpErrorResponse,
   HttpEvent,
-  HttpInterceptor
+  HttpHandler,
+  HttpRequest,
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpInterceptor } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { EMPTY, Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { AuthFacade } from '@auth/store/auth.facade';
+import { TokenStorageService } from '@core/services/token-storage.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
+  constructor(
+    private authFacade: AuthFacade,
+    private tokenStorageService: TokenStorageService
+  ) {}
 
-  constructor() {}
+  intercept(
+    request: HttpRequest<unknown>,
+    next: HttpHandler
+  ): Observable<HttpEvent<unknown>> {
+    const accessToken = this.tokenStorageService.getAccessToken();
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    return next.handle(request);
+    if (accessToken) {
+      request = request.clone({
+        setHeaders: { Authorization: `Bearer ${accessToken}` },
+        // !Attention: it used only at Fake API, remove it in real app
+        params: request.params.set('auth-token', accessToken),
+      });
+    }
+
+    return next.handle(request).pipe((s) => this.handleErrors(s, request.url));
+  }
+
+  private handleErrors(
+    source: Observable<HttpEvent<unknown>>,
+    urlPath: string
+  ): Observable<HttpEvent<unknown>> {
+    return source.pipe(
+      catchError((error: HttpErrorResponse) => {
+        // try to avoid errors on logout,
+        // therefore, we check the url path of '/auth/'
+        if (error.status === 401 && !urlPath.includes('/auth/')) {
+          return this.handle401();
+        }
+
+        // rethrow error
+        return throwError(() => error);
+      })
+    );
+  }
+
+  private handle401() {
+    this.authFacade.logout();
+    return EMPTY;
   }
 }

@@ -1,8 +1,10 @@
-import {HttpClient} from "@angular/common/http";
-import {map, Observable} from "rxjs";
-import {GenericResourceModel} from "@shared/models/generic-resource.model";
+import { HttpClient } from '@angular/common/http';
+import { map, Observable } from 'rxjs';
+import { GenericResourceModel } from '@shared/models/generic-resource.model';
 
-export abstract class GenericResourceService<T extends GenericResourceModel<T>> {
+export abstract class GenericResourceService<
+  T extends GenericResourceModel<T>
+> {
   protected constructor(
     private httpClient: HttpClient,
     private tConstructor: { new (m: Partial<T>, ...args: unknown[]): T },

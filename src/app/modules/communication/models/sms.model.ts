@@ -1,1 +1,3 @@
-export interface Sms { id: number; }
+export interface Sms {
+  id: number;
+}

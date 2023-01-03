@@ -1,5 +1,5 @@
 export abstract class GenericResourceModel<T> {
-  public _id?: string|number;
+  public _id?: string | number;
   public createdAt?: Date;
   public updatedAt?: Date;
 

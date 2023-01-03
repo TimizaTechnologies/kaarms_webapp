@@ -6,6 +6,6 @@ export interface Review {
   $key: string;
   firstName: string;
   lastName: string;
-  email: string
+  email: string;
   mobileNumber: number;
 }

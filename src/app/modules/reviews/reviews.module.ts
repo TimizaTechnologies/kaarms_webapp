@@ -4,26 +4,19 @@ import { ListComponent } from './components/list/list.component';
 import { ReviewsComponent } from './reviews.component';
 import { AddComponent } from './components/add/add.component';
 import { EditComponent } from './components/edit/edit.component';
-import {RouterOutlet} from "@angular/router";
-import {SharedModule} from "@shared/shared.module";
-import {ReviewsRoutingModule} from "@modules/reviews/reviews-routing.module";
-import {NgxPaginationModule} from "ngx-pagination";
-
-
+import { RouterOutlet } from '@angular/router';
+import { SharedModule } from '@shared/shared.module';
+import { ReviewsRoutingModule } from '@modules/reviews/reviews-routing.module';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
-  declarations: [
-    ListComponent,
-    ReviewsComponent,
-    AddComponent,
-    EditComponent
-  ],
+  declarations: [ListComponent, ReviewsComponent, AddComponent, EditComponent],
   imports: [
     CommonModule,
     ReviewsRoutingModule,
     SharedModule,
     RouterOutlet,
-    NgxPaginationModule
-  ]
+    NgxPaginationModule,
+  ],
 })
-export class ReviewsModule { }
+export class ReviewsModule {}

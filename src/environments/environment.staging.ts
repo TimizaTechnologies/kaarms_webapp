@@ -1,9 +1,9 @@
-const _ = require('lodash');
-import { commonEnv } from "./environment.common";
+import * as _ from 'lodash';
+import { commonEnv } from './environment.common';
 
 const env: Partial<typeof commonEnv> = {
   production: true,
-  environmentName: "staging",
+  environmentName: 'staging',
 };
 
 // Export all settings of common replaced by dev options

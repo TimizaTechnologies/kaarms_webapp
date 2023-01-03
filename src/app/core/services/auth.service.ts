@@ -1,15 +1,18 @@
-import {Injectable, NgZone} from '@angular/core';
-import {Observable} from "rxjs";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import { Injectable, NgZone } from '@angular/core';
+import { Observable } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import * as auth from 'firebase/auth';
-import {AngularFireAuth} from "@angular/fire/compat/auth";
-import {Router} from "@angular/router";
-import {AngularFirestore, AngularFirestoreDocument} from "@angular/fire/compat/firestore";
-import {User} from "@modules/users/models/user.model";
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Router } from '@angular/router';
+import {
+  AngularFirestore,
+  AngularFirestoreDocument,
+} from '@angular/fire/compat/firestore';
+import { User } from '@modules/users/models/user.model';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   userData: any; // Save logged in user data
@@ -23,7 +26,7 @@ export class AuthService {
   ) {
     /* Saving user data in localstorage when
     logged in and setting up null when logged out */
-    this.afAuth.authState.subscribe((user) => {
+    this.afAuth.authState.subscribe(user => {
       if (user) {
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
@@ -39,15 +42,15 @@ export class AuthService {
   SignIn(email: string, password: string) {
     return this.afAuth
       .signInWithEmailAndPassword(email, password)
-      .then((result) => {
+      .then(result => {
         this.SetUserData(result.user);
-        this.afAuth.authState.subscribe((user) => {
+        this.afAuth.authState.subscribe(user => {
           if (user) {
             this.router.navigate(['dashboard']);
           }
         });
       })
-      .catch((error) => {
+      .catch(error => {
         window.alert(error.message);
       });
   }
@@ -55,13 +58,13 @@ export class AuthService {
   SignUp(email: string, password: string) {
     return this.afAuth
       .createUserWithEmailAndPassword(email, password)
-      .then((result) => {
+      .then(result => {
         /* Call the SendVerificaitonMail() function when new user sign
         up and returns promise */
         this.SendVerificationMail();
         this.SetUserData(result.user);
       })
-      .catch((error) => {
+      .catch(error => {
         window.alert(error.message);
       });
   }
@@ -70,7 +73,7 @@ export class AuthService {
     return this.afAuth.currentUser
       .then((u: any) => u.sendEmailVerification())
       .then(() => {
-        this.router.navigate(['verify-email-address']);
+        this.router.navigate(['accounts/verify-email-address']);
       });
   }
   // Reset Forggot password
@@ -80,7 +83,7 @@ export class AuthService {
       .then(() => {
         window.alert('Password reset email sent, check your inbox.');
       })
-      .catch((error) => {
+      .catch(error => {
         window.alert(error);
       });
   }
@@ -99,11 +102,11 @@ export class AuthService {
   AuthLogin(provider: any) {
     return this.afAuth
       .signInWithPopup(provider)
-      .then((result) => {
+      .then(result => {
         this.router.navigate(['dashboard']);
         this.SetUserData(result.user);
       })
-      .catch((error) => {
+      .catch(error => {
         window.alert(error);
       });
   }
@@ -131,22 +134,25 @@ export class AuthService {
 
   // Firebase SignInWithPopup
   OAuthProvider(provider) {
-    return this.afAuth.signInWithPopup(provider)
-      .then((res) => {
+    return this.afAuth
+      .signInWithPopup(provider)
+      .then(res => {
         this.ngZone.run(() => {
           this.router.navigate(['dashboard']);
-        })
-      }).catch((error) => {
-        window.alert(error)
+        });
       })
+      .catch(error => {
+        window.alert(error);
+      });
   }
   // Firebase Google Sign-in
   SigninWithGoogle() {
     return this.OAuthProvider(new auth.GoogleAuthProvider())
       .then(res => {
-        console.log('Successfully logged in!')
-      }).catch(error => {
-        console.log(error)
+        console.log('Successfully logged in!');
+      })
+      .catch(error => {
+        console.log(error);
       });
   }
 
@@ -168,7 +174,7 @@ export class AuthService {
   SignOut() {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
-      this.router.navigate(['login']);
+      this.router.navigate(['accounts/login']);
     });
   }
 }

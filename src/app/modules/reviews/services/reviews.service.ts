@@ -4,10 +4,10 @@ import {
   AngularFireList,
   AngularFireObject,
 } from '@angular/fire/compat/database';
-import {Review} from "@modules/reviews/models/review.model";
+import { Review } from '@modules/reviews/models/review.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ReviewsService {
   studentsRef: AngularFireList<any>;

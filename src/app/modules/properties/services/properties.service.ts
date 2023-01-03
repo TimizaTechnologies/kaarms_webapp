@@ -4,10 +4,10 @@ import {
   AngularFireList,
   AngularFireObject,
 } from '@angular/fire/compat/database';
-import {Book} from "@modules/properties/models/property.model";
+import { Book } from '@modules/properties/models/property.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PropertiesService {
   booksRef: AngularFireList<any>;

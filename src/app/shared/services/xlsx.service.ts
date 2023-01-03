@@ -11,17 +11,16 @@ export class XLSXData {
 type AOA = any[][];
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class XlsxService {
-
   private wopts: XLSX.WritingOptions = { bookType: 'xlsx', type: 'binary' };
 
   constructor() {}
 
   export(sheetsData: XLSXData[], sheetNames: string[], fileName): void {
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
-    wb.Workbook = { Views: sheetNames.map(s => ({ RTL: true })) };
+    wb.Workbook = { Views: sheetNames.map((s) => ({ RTL: true })) };
     sheetsData.forEach((data, i) => {
       if (!data.rows[0]) {
         return;
@@ -33,10 +32,10 @@ export class XlsxService {
           colsWidth[i] = { wpx: 70 };
           return;
         }
-        const items = data.rows.map(r => (r[key] ? r[key].toString() : ''));
+        const items = data.rows.map((r) => (r[key] ? r[key].toString() : ''));
         items.push(key);
         const maxStrLength = items.reduce((a, b) =>
-          a.length > b.length ? a : b,
+          a.length > b.length ? a : b
         ).length;
         colsWidth[i] = { wch: maxStrLength + 1 };
       });
@@ -50,12 +49,12 @@ export class XlsxService {
 
       aoa.push(
         Object.keys(data.rows[0])
-          .map(key => key)
-          .concat(['', '', '', '', '', '']),
+          .map((key) => key)
+          .concat(['', '', '', '', '', ''])
       );
       data.rows.forEach((v, i) => {
         aoa.push(
-          Object.values<any>(data.rows[i]).concat(['', '', '', '', '', '']),
+          Object.values<any>(data.rows[i]).concat(['', '', '', '', '', ''])
         );
       });
       if (data.description) {

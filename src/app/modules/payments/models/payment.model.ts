@@ -6,7 +6,7 @@
 /*export interface Payment {
 
 }*/
-import {GenericResourceModel} from "@shared/models/generic-resource.model";
+import { GenericResourceModel } from '@shared/models/generic-resource.model';
 
 export class Payment extends GenericResourceModel<Payment> {
   public name!: string;

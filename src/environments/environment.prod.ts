@@ -1,9 +1,12 @@
-const _ = require('lodash');
-import { commonEnv } from "./environment.common";
+import * as _ from 'lodash';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { version } = require('../../package.json');
+import { commonEnv } from './environment.common';
 
 const env: Partial<typeof commonEnv> = {
   production: true,
-  environmentName: "production",
+  environmentName: 'production',
+  appVersion: version,
 };
 
 // Export all settings of common replaced by dev options

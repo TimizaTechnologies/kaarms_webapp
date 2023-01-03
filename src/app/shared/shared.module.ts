@@ -2,13 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SearchComponent } from './components/search/search.component';
 import { DynamicFormInputComponent } from './components/dynamic-form-input/dynamic-form-input.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
-import {MaterialModule} from "../material/material.module";
+import { MaterialModule } from '@material/material.module';
 import { FluidHeightDirective } from './directives/fluid-height.directive';
-
-
 
 @NgModule({
   declarations: [
@@ -16,22 +14,16 @@ import { FluidHeightDirective } from './directives/fluid-height.directive';
     DynamicFormInputComponent,
     DynamicFormComponent,
     SpinnerComponent,
-    FluidHeightDirective
+    FluidHeightDirective,
   ],
-    imports: [
-        CommonModule,
-        ReactiveFormsModule,
-      FormsModule,
-      ReactiveFormsModule,
-      MaterialModule,
-    ],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, MaterialModule],
   exports: [
-    ReactiveFormsModule,
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
     SpinnerComponent,
     DynamicFormComponent,
-  ]
+    DynamicFormInputComponent,
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}

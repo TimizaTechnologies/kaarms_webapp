@@ -7,8 +7,13 @@
 </mat-toolbar>
 <mat-sidenav-container>
   <!-- Sidenav -->
-  <mat-sidenav #sidenav [mode]="isBiggerScreen() ? 'over' : 'side'" [(opened)]="opened" [fixedInViewport]="true"
-               [fixedTopGap]="1">
+  <mat-sidenav
+    #sidenav
+    [mode]="isBiggerScreen() ? 'over' : 'side'"
+    [(opened)]="opened"
+    [fixedInViewport]="true"
+    [fixedTopGap]="1"
+  >
     <mat-nav-list>
       <a mat-list-item routerLinkActive="active" routerLink="/properties/add">
         <mat-icon>add</mat-icon> Add Book

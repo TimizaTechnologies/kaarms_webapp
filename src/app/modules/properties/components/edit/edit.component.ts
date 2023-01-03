@@ -1,18 +1,18 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Language } from '../add/add.component';
-import {COMMA, ENTER} from "@angular/cdk/keycodes";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import {PropertiesService} from "@modules/properties/services/properties.service";
-import {MatChipInputEvent} from "@angular/material/chips";
+import { PropertiesService } from '@modules/properties/services/properties.service';
+import { MatChipInputEvent } from '@angular/material/chips';
 
 @Component({
   selector: 'app-edit-property',
   templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.css']
+  styleUrls: ['./edit.component.css'],
 })
-export class EditComponent implements OnInit{
+export class EditComponent implements OnInit {
   visible = true;
   selectable = true;
   removable = true;

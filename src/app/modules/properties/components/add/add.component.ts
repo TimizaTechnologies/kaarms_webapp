@@ -1,8 +1,8 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatChipInputEvent} from "@angular/material/chips";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {PropertiesService} from "@modules/properties/services/properties.service";
-import {COMMA, ENTER} from "@angular/cdk/keycodes";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatChipInputEvent } from '@angular/material/chips';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { PropertiesService } from '@modules/properties/services/properties.service';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import Swal from 'sweetalert2';
 
 export interface Language {
@@ -11,9 +11,9 @@ export interface Language {
 @Component({
   selector: 'app-add-property',
   templateUrl: './add.component.html',
-  styleUrls: ['./add.component.css']
+  styleUrls: ['./add.component.css'],
 })
-export class AddComponent implements OnInit{
+export class AddComponent implements OnInit {
   visible = true;
   selectable = true;
   removable = true;

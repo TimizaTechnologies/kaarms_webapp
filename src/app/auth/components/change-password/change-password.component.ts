@@ -1,15 +1,15 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
-import {ActivatedRoute} from "@angular/router";
-import {AuthService} from "@core/services/auth.service";
-import {throwError} from "rxjs";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '@core/services/auth.service';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-change-password',
   templateUrl: './change-password.component.html',
-  styleUrls: ['./change-password.component.css']
+  styleUrls: ['./change-password.component.css'],
 })
-export class ChangePasswordComponent implements OnInit{
+export class ChangePasswordComponent implements OnInit {
   changePasswordForm: FormGroup;
   errors = null;
   constructor(

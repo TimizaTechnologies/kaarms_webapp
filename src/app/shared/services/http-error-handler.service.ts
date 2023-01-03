@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
-import {Observable, throwError} from "rxjs";
-import {HttpErrorResponse} from "@angular/common/http";
+import { Observable, throwError } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class HttpErrorHandler {
-
-  constructor() { }
+  constructor() {}
 
   handleError(err: HttpErrorResponse): Observable<never> {
     let displayMessage = '';

@@ -1,11 +1,15 @@
-import {Component, Inject, OnInit, ViewChild} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
-import {MatTableDataSource} from "@angular/material/table";
-import {MatPaginator} from "@angular/material/paginator";
-import {FormControl, FormGroup} from "@angular/forms";
-import {Subscription} from "rxjs";
-import {Invoice} from "../../../payments/models/invoice.model";
-import {TenantsService} from "../../services/tenants.service";
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import {
+  MAT_DIALOG_DATA,
+  MatDialog,
+  MatDialogRef,
+} from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { Invoice } from '../../../payments/models/invoice.model';
+import { TenantsService } from '../../services/tenants.service';
 
 export interface imgFile {
   name: string;
@@ -15,7 +19,7 @@ export interface imgFile {
 @Component({
   selector: 'app-tenant-detail',
   templateUrl: './tenant-detail.component.html',
-  styleUrls: ['./tenant-detail.component.css']
+  styleUrls: ['./tenant-detail.component.css'],
 })
 export class TenantDetailComponent implements OnInit {
   subscription: Subscription;
@@ -30,15 +34,16 @@ export class TenantDetailComponent implements OnInit {
     name: new FormControl(''),
     email: new FormControl(''),
     phoneNumber: new FormControl(''),
-    notes: new FormControl('')
+    notes: new FormControl(''),
   });
 
   constructor(
     private tenantService: TenantsService,
-    public addInvoiceDialog: MatDialog) { }
+    public addInvoiceDialog: MatDialog
+  ) {}
 
   ngOnInit() {
-    this.subscription = this.tenantService.getTenant().subscribe(tenant => {
+    this.subscription = this.tenantService.getTenant().subscribe((tenant) => {
       this.tenantForm.patchValue(tenant);
       this.invoices = new MatTableDataSource(tenant.invoices);
       // this.invoices.paginator = this.paginator;
@@ -47,7 +52,7 @@ export class TenantDetailComponent implements OnInit {
 
   saveTenant(): void {
     if (!this.tenantForm.value._id) {
-      this.tenantForm.value._id = String(Math.floor((Math.random() * 10000) + 1));
+      this.tenantForm.value._id = String(Math.floor(Math.random() * 10000 + 1));
     }
     this.tenantService.saveTenant(this.tenantForm.value);
     this.tenantService.requestTenant(this.tenantForm.value._id);
@@ -55,7 +60,7 @@ export class TenantDetailComponent implements OnInit {
   }
 
   deleteTenant(): void {
-    if (confirm("Are you sure?")) {
+    if (confirm('Are you sure?')) {
       this.tenantService.deleteTenant(this.tenantForm.value._id);
       this.tenantService.requestTenants();
       this.clearForm();
@@ -72,9 +77,12 @@ export class TenantDetailComponent implements OnInit {
   }
 
   openAddInvoiceDialog(): void {
-    const dialogRef = this.addInvoiceDialog.open(AddInvoiceDialog, {width: '50%', data: new Invoice});
+    const dialogRef = this.addInvoiceDialog.open(AddInvoiceDialog, {
+      width: '50%',
+      data: new Invoice(),
+    });
 
-    dialogRef.afterClosed().subscribe(invoice => {
+    dialogRef.afterClosed().subscribe((invoice) => {
       if (invoice) {
         invoice.created = new Date();
         this.tenantService.addInvoice(this.tenantForm.value, invoice);
@@ -84,15 +92,15 @@ export class TenantDetailComponent implements OnInit {
   }
 }
 
-
 @Component({
   selector: 'add-invoice',
-  templateUrl: 'add-invoice.html'
+  templateUrl: 'add-invoice.html',
 })
-
 export class AddInvoiceDialog {
-  constructor(public dialogRef: MatDialogRef<AddInvoiceDialog>,
-              @Inject(MAT_DIALOG_DATA) public invoice: Invoice) {}
+  constructor(
+    public dialogRef: MatDialogRef<AddInvoiceDialog>,
+    @Inject(MAT_DIALOG_DATA) public invoice: Invoice
+  ) {}
 
   onNoClick(): void {
     this.dialogRef.close();

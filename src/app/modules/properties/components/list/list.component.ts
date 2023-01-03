@@ -1,8 +1,8 @@
-import {Component, ViewChild} from '@angular/core';
-import {MatTableDataSource} from "@angular/material/table";
-import {Book} from "@modules/properties/models/property.model";
-import {MatPaginator} from "@angular/material/paginator";
-import {PropertiesService} from "@modules/properties/services/properties.service";
+import { Component, ViewChild } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { Book } from '@modules/properties/models/property.model';
+import { MatPaginator } from '@angular/material/paginator';
+import { PropertiesService } from '@modules/properties/services/properties.service';
 
 /**
  * Property listings: Allow property owners to list their rentals and include details such as location, size, price, and available dates.
@@ -10,7 +10,7 @@ import {PropertiesService} from "@modules/properties/services/properties.service
 @Component({
   selector: 'app-list-properties',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  styleUrls: ['./list.component.css'],
 })
 export class ListComponent {
   dataSource: MatTableDataSource<Book>;

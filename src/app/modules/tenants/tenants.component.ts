@@ -1,13 +1,13 @@
-import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {MatTableDataSource} from "@angular/material/table";
-import {Subscription} from "rxjs";
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { Subscription } from 'rxjs';
 // import {MatPaginator} from "@angular/material/paginator";
-import {TenantsService} from "./services/tenants.service";
+import { TenantsService } from './services/tenants.service';
 
 @Component({
   selector: 'app-tenants',
   templateUrl: './tenants.component.html',
-  styleUrls: ['./tenants.component.css']
+  styleUrls: ['./tenants.component.css'],
 })
 export class TenantsComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['name', 'email', 'phoneNumber'];
@@ -17,7 +17,7 @@ export class TenantsComponent implements OnInit, OnDestroy {
 
   // @ViewChild (MatPaginator, null) paginator: MatPaginator;
 
-  constructor(private tenantService: TenantsService) { }
+  constructor(private tenantService: TenantsService) {}
 
   ngOnInit() {
     this.getTenants();
@@ -31,7 +31,7 @@ export class TenantsComponent implements OnInit, OnDestroy {
     this.tenantService.requestTenants();
   }
 
-  loadTenant(tenantId: String): void {
+  loadTenant(tenantId: string): void {
     this.tenantService.requestTenant(tenantId);
   }
 

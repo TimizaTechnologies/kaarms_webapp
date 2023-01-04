@@ -20,12 +20,9 @@ import { Tenant } from '@modules/tenants/models/tenant.model';
 })
 export class EditComponent implements OnInit {
   reservationForm: FormGroup;
-  tenantControl = new FormControl<Tenant | null>(null, Validators.required);
-  propertyControl = new FormControl<Property | null>(null, Validators.required);
   id: number;
   isEdit: boolean;
   tenants;
-  users;
   properties;
 
   constructor(
@@ -40,10 +37,15 @@ export class EditComponent implements OnInit {
 
   ngOnInit() {
     this.reservationForm = this.formBuilder.group({
-      name: ['', Validators.required],
+      cost: ['', Validators.required],
       description: ['', Validators.required],
       start_date: new FormControl<Date | null>(null),
       end_date: new FormControl<Date | null>(null),
+      tenantControl: new FormControl<Tenant | null>(null, Validators.required),
+      propertyControl: new FormControl<Property | null>(
+        null,
+        Validators.required
+      ),
     });
 
     this.id = this.route.snapshot.params['id'];

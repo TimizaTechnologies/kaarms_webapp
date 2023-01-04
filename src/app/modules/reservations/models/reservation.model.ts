@@ -4,7 +4,7 @@
  * */
 export interface Reservation {
   id?: number;
-  user: number;
+  tenant: number;
   property: number;
   start_date: Date;
   end_date: Date;

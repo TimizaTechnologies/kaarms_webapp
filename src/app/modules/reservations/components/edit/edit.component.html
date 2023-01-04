@@ -2,30 +2,30 @@
   <mat-card-title>Add/Edit</mat-card-title>
   <mat-card-content>
     <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
-      <h4>User</h4>
+      <h4>Tenant</h4>
       <mat-form-field appearance="fill">
-        <mat-label>User</mat-label>
-        <mat-select [formControl]="tenantControl" required>
+        <mat-label>Tenant</mat-label>
+        <mat-select [formControl]="reservationForm['tenantControl']" required>
           <mat-option *ngFor="let tenant of tenants" [value]="tenant.value">
             {{ tenant.name }}
           </mat-option>
         </mat-select>
-        <mat-error *ngIf="tenantControl.hasError('required')"
-          >Please choose a user</mat-error
+        <mat-error *ngIf="reservationForm['tenantControl'].hasError('required')"
+          >Please choose a tenant</mat-error
         >
       </mat-form-field>
 
       <h4>Property</h4>
       <mat-form-field appearance="fill">
         <mat-label>Property</mat-label>
-        <mat-select [formControl]="propertyControl" required>
+        <mat-select [formControl]="reservationForm['propertyControl']" required>
           <mat-option
             *ngFor="let property of properties"
             [value]="property.value">
             {{ property.name }}
           </mat-option>
         </mat-select>
-        <mat-error *ngIf="propertyControl.hasError('required')"
+        <mat-error *ngIf="reservationForm['propertyControl'].hasError('required')"
           >Please choose a property</mat-error
         >
       </mat-form-field>
@@ -34,16 +34,9 @@
         <input matInput placeholder="Cost" formControlName="cost" required />
       </mat-form-field>
       <br />
-      <mat-form-field>
-        <textarea
-          matInput
-          placeholder="Description"
-          formControlName="description"
-          required></textarea>
-      </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <mat-label>Enter a date range</mat-label>
+        <mat-label>Enter a date range (Start Date - End Date)</mat-label>
         <mat-date-range-input
           [formGroup]="reservationForm"
           [rangePicker]="picker">

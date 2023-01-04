@@ -10,7 +10,7 @@ import { TenantsService } from './services/tenants.service';
   styleUrls: ['./tenants.component.css'],
 })
 export class TenantsComponent implements OnInit, OnDestroy {
-  displayedColumns: string[] = ['name', 'email', 'phoneNumber'];
+  displayedColumns: string[] = ['name', 'email', 'phone_number'];
   dataSource = new MatTableDataSource();
   devicesLoaded = false;
   subscription: Subscription;

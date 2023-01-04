@@ -1,5 +1,5 @@
-<header>
-  <div class="flex items-center">
+<!--header>
+  <div class="flex items-center"-->
     <!-- BEGIN: Menu Dropdown
     <div class="inline lg:hidden">
       <tui-hosted-dropdown [content]="dropdownMenu">
@@ -28,7 +28,7 @@
     </div>
      END: Menu Dropdown -->
 
-    <!-- BEGIN: Title -->
+    <!-- BEGIN: Title ->
     <a routerLink="/home" class="flex items-center">
       <img src="/assets/images/logo.svg" class="logo-icon" />
       <span class="text-xl font-semibold">
@@ -36,7 +36,7 @@
         <span class="inline md:hidden">Auth</span>
       </span>
     </a>
-    <!-- END: Title -->
+    <!- END: Title -->
 
     <!-- BEGIN: Main menu items
     <div class="menu-items hidden lg:inline">
@@ -52,9 +52,9 @@
       </a>
     </div>
      END: Main menu items -->
-  </div>
+  <!--/div>
 
-  <div class="flex items-center">
+  <div class="flex items-center"-->
     <!-- BEGIN: Auth user menu
     <div *ngIf="authUser$ | async as user; else login">
       <tui-hosted-dropdown tuiDropdownAlign="left" [content]="userDropdown">
@@ -84,7 +84,7 @@
     </ng-template>
      END: Auth user menu -->
 
-    <!-- BEGIN: Github link -->
+    <!-- BEGIN: Github link ->
     <a
       href="https://github.com/nikosanif/angular-authentication"
       target="_blank"
@@ -92,6 +92,68 @@
       class="ml-4 text-2xl">
       <mat-icon>github</mat-icon>
     </a>
-    <!-- END: Github link -->
+    <!- END: Github link -->
+  <!--/div>
+</header-->
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <!-- Container wrapper -->
+  <div class="container">
+    <!-- Navbar brand -->
+    <a class="navbar-brand me-2" href="https://mdbgo.com/">
+      <img
+        src="https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.webp"
+        height="16"
+        alt=""
+        loading="lazy"
+        style="margin-top: -1px;"
+      />
+    </a>
+
+    <!-- Toggle button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <!--(click)="buttonsNav.toggle()"-->
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Collapsible wrapper -->
+    <div
+      class="collapse navbar-collapse"
+      id="navbarButtonsExample"
+    >
+    <!--mdbCollapse
+      #buttonsNav="mdbCollapse"-->
+      <!-- Left links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Dashboard</a>
+        </li>
+      </ul>
+      <!-- Left links -->
+
+      <div class="d-flex align-items-center">
+        <button type="button" class="btn btn-link px-3 me-2">
+          Login
+        </button>
+        <button type="button" class="btn btn-primary me-3">
+          Sign up for free
+        </button>
+        <a
+          class="btn btn-dark px-3"
+          href="https://github.com/mdbootstrap/mdb-ui-kit"
+          role="button"
+          ><i class="fab fa-github"></i
+        ></a>
+      </div>
+    </div>
+    <!-- Collapsible wrapper -->
   </div>
-</header>
+  <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->

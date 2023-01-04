@@ -4,7 +4,7 @@ import { ReviewsService } from '@modules/reviews/services/reviews.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-list',
+  selector: 'app-list-reviews',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css'],
 })
@@ -29,6 +29,7 @@ export class ListComponent implements OnInit {
       });
     });
   }
+
   dataState() {
     this.crudApi
       .GetStudentsList()
@@ -44,6 +45,7 @@ export class ListComponent implements OnInit {
         }
       });
   }
+
   deleteStudent(student) {
     if (window.confirm('Are sure you want to delete this student ?')) {
       this.crudApi.DeleteStudent(student.$key);

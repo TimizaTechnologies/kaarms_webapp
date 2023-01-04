@@ -8,9 +8,10 @@ import { RouterOutlet } from '@angular/router';
 import { SharedModule } from '@shared/shared.module';
 import { ReviewsRoutingModule } from '@modules/reviews/reviews-routing.module';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { AddEditComponent } from './components/add-edit/add-edit.component';
 
 @NgModule({
-  declarations: [ListComponent, ReviewsComponent, AddComponent, EditComponent],
+  declarations: [ListComponent, ReviewsComponent, AddComponent, EditComponent, AddEditComponent],
   imports: [
     CommonModule,
     ReviewsRoutingModule,

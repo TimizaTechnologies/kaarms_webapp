@@ -5,7 +5,7 @@ export const commonEnv = {
   production: false,
   environmentName: 'development',
   appVersion: `${version}-dev`,
-  apiUrl: 'http://localhost:8001/api/',
+  apiUrl: 'http://localhost:8000/api/',
   firebase: {
     projectId: 'kaarms-d20c4',
     appId: '1:437039208173:web:6a7070f0c3eb2a3b915ee4',

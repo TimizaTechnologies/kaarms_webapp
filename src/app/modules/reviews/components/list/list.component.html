@@ -1,12 +1,10 @@
 <div
-  class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
->
+  class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
   <h2 class="h2">Students List</h2>
   <a
     routerLink="/reviews/add"
     class="btn btn-success"
-    *ngIf="hideWhenNoStudent"
-  >
+    *ngIf="hideWhenNoStudent">
     Add Student
   </a>
 </div>
@@ -15,22 +13,19 @@
     <img
       src="assets/images/preloader.gif"
       class="preloader-icon"
-      alt="No student"
-    />
+      alt="No student" />
   </div>
   <div class="no-data text-center" *ngIf="noData">
     <img
       src="assets/images/no-student.svg"
       class="nodata-msg"
-      alt="No student"
-    />
+      alt="No student" />
     <p class="nodata-msg">No student added yet!</p>
     <a routerLink="/reviews/add" class="btn btn-success"> Add Student </a>
   </div>
   <div class="table-responsive" *ngIf="hideWhenNoStudent">
     <table
-      class="table table-bordered table-responsive-sm table-responsive-md table-responsive-lg"
-    >
+      class="table table-bordered table-responsive-sm table-responsive-md table-responsive-lg">
       <thead>
         <tr>
           <th scope="col">Student Id</th>
@@ -46,16 +41,15 @@
             let student of Student
               | paginate : { itemsPerPage: 8, currentPage: p };
             let i = index
-          "
-        >
-          <th scope="row">{{ student._id }}</th>
+          ">
+          <th scope="row">{{ student.id }}</th>
           <td>{{ student.name }}</td>
           <td>{{ student.email }}</td>
-          <td>{{ student.phoneNumber }}</td>
+          <td>{{ student.phone_number }}</td>
           <td class="text-center action-block">
             <span
               class="mr-2 btn btn-outline-primary btn-sm"
-              routerLink="/reviews/edit/{{ student._id }}"
+              routerLink="/reviews/edit/{{ student.id }}"
               >Edit</span
             >
             <span

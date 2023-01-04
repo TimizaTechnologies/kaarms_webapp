@@ -1,7 +1,6 @@
 <div
-  class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
->
-  <h1 class="h2">Edit Student Details</h1>
+  class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Edit Review</h1>
   <div class="btn-toolbar mb-2 mb-md-0">
     <div class="btn-group">
       <button class="btn btn-sm btn-outline-secondary" (click)="goBack()">
@@ -20,11 +19,11 @@
               <div class="col-md-12 mb-3">
                 <label>First name</label>
                 <input
+                  title="first name"
                   type="text"
                   formControlName="firstName"
                   class="form-control"
-                  required
-                />
+                  required />
                 <p *ngIf="firstName.touched && firstName.invalid" class="error">
                   <sup>*</sup>Please enter firstname
                 </p>
@@ -35,21 +34,21 @@
               <div class="col-md-12 mb-3">
                 <label>Last name</label>
                 <input
+                  title="last name"
                   type="text"
                   formControlName="lastName"
-                  class="form-control"
-                />
+                  class="form-control" />
               </div>
             </div>
             <div class="row">
               <div class="col-md-12 mb-3">
                 <label>Email</label>
                 <input
+                  title="email"
                   type="email"
                   formControlName="email"
                   class="form-control"
-                  required
-                />
+                  required />
                 <p *ngIf="email.touched && email.invalid" class="error">
                   <sup>*</sup>Please provide email
                 </p>
@@ -60,15 +59,14 @@
               <div class="col-md-12 mb-3">
                 <label>Mobile number</label>
                 <input
+                  title="phone number"
                   type="text"
                   formControlName="mobileNumber"
                   class="form-control"
-                  required
-                />
+                  required />
                 <p
                   *ngIf="mobileNumber.touched && mobileNumber.invalid"
-                  class="error"
-                >
+                  class="error">
                   <sup>*</sup>Please provide contact number
                 </p>
                 <p *ngIf="mobileNumber.errors?.['pattern']" class="error">
@@ -80,8 +78,7 @@
               <button
                 type="submit"
                 class="btn btn-success btn-block"
-                [disabled]="!editForm.valid"
-              >
+                [disabled]="!editForm.valid">
                 Update Student
               </button>
             </div>

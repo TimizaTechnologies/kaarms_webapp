@@ -1,11 +1,12 @@
 // export interface Invoice {
 export class Invoice {
-  _id: string;
-  created: Date;
-  due: Date;
-  service: String;
-  value: Number;
-  additionalNotes: String;
+  id: string;
+  tenant: number;
+  created_date: Date;
+  due_date: Date;
+  service: string;
+  value: number;
+  additional_notes: string;
 }
 
 /*export class Invoice {

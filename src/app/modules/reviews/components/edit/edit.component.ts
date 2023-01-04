@@ -26,7 +26,7 @@ export class EditComponent implements OnInit {
     this.crudApi
       .GetStudent(id)
       .valueChanges()
-      .subscribe((data) => {
+      .subscribe(data => {
         this.editForm.setValue(data);
       });
   }

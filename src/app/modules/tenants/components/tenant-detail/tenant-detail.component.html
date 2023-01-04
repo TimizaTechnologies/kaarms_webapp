@@ -1,6 +1,6 @@
 <div class="row">
   <h2 class="align-center">
-    {{ tenantForm.value._id ? tenantForm.value.name : "Add Tenant" }}
+    {{ tenantForm.value.id ? tenantForm.value.name : 'Add Tenant' }}
   </h2>
   <div class="ten columns offset by-one">
     <mat-tab-group>
@@ -12,8 +12,7 @@
               matInput
               placeholder="Full Name"
               formControlName="name"
-              name="name"
-            />
+              name="name" />
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
@@ -21,17 +20,15 @@
               matInput
               placeholder="Email"
               formControlName="email"
-              name="email"
-            />
+              name="email" />
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Phone Number</mat-label>
             <input
               matInput
               placeholder="Phone Number"
-              formControlName="phoneNumber"
-              name="phoneNumber"
-            />
+              formControlName="phone_number"
+              name="phone_number" />
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Notes</mat-label>
@@ -39,8 +36,7 @@
               matInput
               placeholder="Notes"
               formControlName="notes"
-              name="notes"
-            >
+              name="notes">
 Notes</textarea
             >
           </mat-form-field>
@@ -48,23 +44,20 @@ Notes</textarea
             mat-stroked-button
             class="offset by-three"
             (click)="saveTenant()"
-            [disabled]="!tenantForm.value.name"
-          >
+            [disabled]="!tenantForm.value.name">
             Save
           </button>
           <button
             mat-stroked-button
             class="offset by-one"
-            (click)="clearForm()"
-          >
+            (click)="clearForm()">
             Clear
           </button>
           <button
             mat-stroked-button
             class="offset by-one"
             (click)="deleteTenant()"
-            [disabled]="!tenantForm.value._id"
-          >
+            [disabled]="!tenantForm.value.id">
             Delete
           </button>
         </form>
@@ -99,15 +92,13 @@ Notes</textarea
           [pageSize]="10"
           [pageSizeOptions]="[5, 10, 25, 100]"
           showFirstLastButtons
-          aria-label="Select page"
-        >
+          aria-label="Select page">
         </mat-paginator>
         <button
           mat-stroked-button
           class="offset by-four"
           id="create-invoice"
-          (click)="openAddInvoiceDialog()"
-        >
+          (click)="openAddInvoiceDialog()">
           Create Invoice
         </button>
       </mat-tab>

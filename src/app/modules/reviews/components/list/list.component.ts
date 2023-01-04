@@ -9,21 +9,21 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./list.component.css'],
 })
 export class ListComponent implements OnInit {
-  p: number = 1;
+  p = 1;
   Student: Tenant[];
-  hideWhenNoStudent: boolean = false;
-  noData: boolean = false;
-  preLoader: boolean = true;
+  hideWhenNoStudent = false;
+  noData = false;
+  preLoader = true;
 
   constructor(public crudApi: ReviewsService, public toastr: ToastrService) {}
 
   ngOnInit() {
     this.dataState();
-    let s = this.crudApi.GetStudentsList();
-    s.snapshotChanges().subscribe((data) => {
+    const s = this.crudApi.GetStudentsList();
+    s.snapshotChanges().subscribe(data => {
       this.Student = [];
-      data.forEach((item) => {
-        let a = item.payload.toJSON();
+      data.forEach(item => {
+        const a = item.payload.toJSON();
         a['$key'] = item.key;
         this.Student.push(a as Tenant);
       });
@@ -33,7 +33,7 @@ export class ListComponent implements OnInit {
     this.crudApi
       .GetStudentsList()
       .valueChanges()
-      .subscribe((data) => {
+      .subscribe(data => {
         this.preLoader = false;
         if (data.length <= 0) {
           this.hideWhenNoStudent = false;

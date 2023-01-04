@@ -27,7 +27,7 @@ export class TenantsService {
 
   public requestTenant(tenantId: string) {
     const tenant = Tenants.find(cust => {
-      return cust._id == tenantId;
+      return cust.id == tenantId;
     });
     this.tenantSubject.next(tenant);
   }
@@ -38,7 +38,7 @@ export class TenantsService {
 
   public deleteTenant(tenantId: string): void {
     const tenantIndex = Tenants.findIndex(cust => {
-      return cust._id == tenantId;
+      return cust.id == tenantId;
     });
     Tenants.splice(tenantIndex, 1);
   }
@@ -46,7 +46,7 @@ export class TenantsService {
   // public saveTenant(tenant: Tenant): void {
   public saveTenant(tenant: any): void {
     const index = Tenants.findIndex(cust => {
-      return cust._id == tenant._id;
+      return cust.id == tenant._id;
     });
     if (index != -1) {
       Tenants[index] = tenant;
@@ -58,7 +58,7 @@ export class TenantsService {
   // public addInvoice(tenant: Tenant, invoice: Invoice): void {
   public addInvoice(tenant: any, invoice: any): void {
     const updatedTenant = Tenants.find(cust => {
-      return cust._id == tenant._id;
+      return cust.id == tenant._id;
     });
     updatedTenant.invoices.unshift(invoice);
   }
@@ -75,7 +75,8 @@ export class TenantsService {
       .pipe(catchError(this.eh.handleError));
   }
 
-  getTenants$(): Observable<Tenant[]> {
+  // getTenants$(): Observable<Tenant[]> {
+  getTenants$(): any {
     return this.http
       .get<Tenant[]>(`${this.tenantUrl}`)
       .pipe(catchError(this.eh.handleError));

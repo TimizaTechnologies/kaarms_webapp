@@ -1,10 +1,10 @@
 import { Invoice } from '../../payments/models/invoice.model';
 
 export interface Tenant {
-  _id: string;
+  id: string;
   name: string;
   email: string;
-  phoneNumber: string;
+  phone_number: string;
   notes: string;
-  invoices: Array<Invoice>;
+  invoices?: Array<Invoice>;
 }

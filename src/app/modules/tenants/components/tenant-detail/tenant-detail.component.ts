@@ -24,16 +24,16 @@ export interface imgFile {
 export class TenantDetailComponent implements OnInit {
   subscription: Subscription;
 
-  displayedColumns: string[] = ['service', 'value', 'created', 'due'];
+  displayedColumns: string[] = ['service', 'value', 'created_date', 'due_date'];
   invoices = new MatTableDataSource();
 
   // @ViewChild(MatPaginator, null) paginator: MatPaginator;
 
   tenantForm = new FormGroup({
-    _id: new FormControl(''),
+    id: new FormControl(''),
     name: new FormControl(''),
     email: new FormControl(''),
-    phoneNumber: new FormControl(''),
+    phone_number: new FormControl(''),
     notes: new FormControl(''),
   });
 
@@ -43,25 +43,25 @@ export class TenantDetailComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.subscription = this.tenantService.getTenant().subscribe((tenant) => {
+    this.subscription = this.tenantService.getTenant().subscribe(tenant => {
       this.tenantForm.patchValue(tenant);
       this.invoices = new MatTableDataSource(tenant.invoices);
       // this.invoices.paginator = this.paginator;
     });
   }
-
+  Student;
   saveTenant(): void {
-    if (!this.tenantForm.value._id) {
-      this.tenantForm.value._id = String(Math.floor(Math.random() * 10000 + 1));
+    if (!this.tenantForm.value.id) {
+      this.tenantForm.value.id = String(Math.floor(Math.random() * 10000 + 1));
     }
     this.tenantService.saveTenant(this.tenantForm.value);
-    this.tenantService.requestTenant(this.tenantForm.value._id);
+    this.tenantService.requestTenant(this.tenantForm.value.id);
     this.tenantService.requestTenants();
   }
 
   deleteTenant(): void {
     if (confirm('Are you sure?')) {
-      this.tenantService.deleteTenant(this.tenantForm.value._id);
+      this.tenantService.deleteTenant(this.tenantForm.value.id);
       this.tenantService.requestTenants();
       this.clearForm();
     }
@@ -77,28 +77,29 @@ export class TenantDetailComponent implements OnInit {
   }
 
   openAddInvoiceDialog(): void {
-    const dialogRef = this.addInvoiceDialog.open(AddInvoiceDialog, {
+    const dialogRef = this.addInvoiceDialog.open(AddInvoiceDialogComponent, {
       width: '50%',
       data: new Invoice(),
     });
 
-    dialogRef.afterClosed().subscribe((invoice) => {
+    dialogRef.afterClosed().subscribe(invoice => {
       if (invoice) {
         invoice.created = new Date();
         this.tenantService.addInvoice(this.tenantForm.value, invoice);
-        this.tenantService.requestTenant(this.tenantForm.value._id);
+        this.tenantService.requestTenant(this.tenantForm.value.id);
       }
     });
   }
 }
 
 @Component({
-  selector: 'add-invoice',
-  templateUrl: 'add-invoice.html',
+  selector: 'app-add-invoice',
+  templateUrl: './add-invoice.html',
+  styleUrls: ['./add-invoice.css'],
 })
-export class AddInvoiceDialog {
+export class AddInvoiceDialogComponent {
   constructor(
-    public dialogRef: MatDialogRef<AddInvoiceDialog>,
+    public dialogRef: MatDialogRef<AddInvoiceDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public invoice: Invoice
   ) {}
 
@@ -206,11 +207,11 @@ export class FormatFileSizePipe implements PipeTransform {
       ? FILE_SIZE_UNITS_LONG
       : FILE_SIZE_UNITS;
     let power = Math.round(Math.log(sizeInBytes)/Math.log(1024));
-  	power = Math.min(power, units.length - 1);
-  	const size = sizeInBytes / Math.pow(1024, power); // size in new units
-  	const formattedSize = Math.round(size * 100) / 100; // keep up to 2 decimals
-  	const unit = units[power];
-  	return `${formattedSize} ${unit}`;
+    power = Math.min(power, units.length - 1);
+    const size = sizeInBytes / Math.pow(1024, power); // size in new units
+    const formattedSize = Math.round(size * 100) / 100; // keep up to 2 decimals
+    const unit = units[power];
+    return `${formattedSize} ${unit}`;
   }
 }
  */

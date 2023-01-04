@@ -1,8 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ReservationsService } from '@modules/reservations/services/reservations.service';
+import { TenantsService } from '@modules/tenants/services/tenants.service';
+import { PropertiesService } from '@modules/properties/services/properties.service';
+import { Property } from '@modules/properties/models/property.model';
+import { Tenant } from '@modules/tenants/models/tenant.model';
 
 @Component({
   selector: 'app-edit-reservation',
@@ -10,48 +19,74 @@ import { ReservationsService } from '@modules/reservations/services/reservations
   styleUrls: ['./edit.component.css'],
 })
 export class EditComponent implements OnInit {
-  form: FormGroup;
+  reservationForm: FormGroup;
+  tenantControl = new FormControl<Tenant | null>(null, Validators.required);
+  propertyControl = new FormControl<Property | null>(null, Validators.required);
   id: number;
   isEdit: boolean;
+  tenants;
+  users;
+  properties;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
     private snackBar: MatSnackBar,
-    private myService: ReservationsService
+    private reservationsService: ReservationsService,
+    private tenantsService: TenantsService,
+    private propertiesService: PropertiesService
   ) {}
 
   ngOnInit() {
-    this.form = this.formBuilder.group({
+    this.reservationForm = this.formBuilder.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
+      start_date: new FormControl<Date | null>(null),
+      end_date: new FormControl<Date | null>(null),
     });
 
     this.id = this.route.snapshot.params['id'];
     if (this.id) {
       this.isEdit = true;
-      this.myService.getReservation(this.id).subscribe(data => {
-        this.form.patchValue(data);
+      this.reservationsService.getReservation(this.id).subscribe(data => {
+        this.reservationForm.patchValue(data);
       });
     }
+
+    this.getTenants();
+    this.getProperties();
+  }
+
+  getTenants() {
+    return this.tenantsService.getTenants$().subscribe(data => {
+      this.tenants = data.results;
+    });
+  }
+
+  getProperties() {
+    return this.propertiesService.getProperties().subscribe(data => {
+      this.properties = data.results;
+    });
   }
 
   onSubmit() {
     if (this.isEdit) {
-      this.myService
-        .updateReservation(this.id, this.form.value)
+      this.reservationsService
+        .updateReservation(this.id, this.reservationForm.value)
         .subscribe(data => {
           this.snackBar.open('Updated Successfully', '', {
             duration: 2000,
           });
         });
     } else {
-      this.myService.createReservation(this.form.value).subscribe(data => {
-        this.snackBar.open('Created Successfully', '', {
-          duration: 2000,
+      this.reservationsService
+        .createReservation(this.reservationForm.value)
+        .subscribe(data => {
+          this.snackBar.open('Created Successfully', '', {
+            duration: 2000,
+          });
         });
-      });
     }
   }
 }

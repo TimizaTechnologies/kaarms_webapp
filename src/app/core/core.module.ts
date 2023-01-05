@@ -17,7 +17,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AuthModule } from '@auth/auth.module';
 import { authInterceptorProviders } from '@auth/interceptors';
 import { AboutComponent } from './components/about/about.component';
-import { MainStatsComponent } from './components/dashboard/main-stats/main-stats.component';
+import {
+  MainStatsComponent,
+  StackedChartComponent,
+} from './components/dashboard/main-stats/main-stats.component';
 import { CustomRouteReuseStrategy } from './strategies/custom-route-reuse.strategy';
 // import {AppModule} from "../app.module";
 
@@ -31,6 +34,7 @@ import { CustomRouteReuseStrategy } from './strategies/custom-route-reuse.strate
     FooterComponent,
     AboutComponent,
     MainStatsComponent,
+    StackedChartComponent,
   ],
   exports: [ToolbarComponent, FooterComponent, PageNotFoundComponent],
   imports: [

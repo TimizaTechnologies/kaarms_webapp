@@ -6,7 +6,7 @@ body {
 }
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
 /*
@@ -306,7 +306,7 @@ body {
 
 body {
   font-size: 0.875rem;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 .feather {
   width: 16px;
@@ -357,7 +357,7 @@ body {
   text-transform: uppercase;
 }
 /* * Content */
-[role="main"] {
+[role='main'] {
   padding-top: 48px;
 }
 .dasboard-text {
@@ -493,7 +493,7 @@ label {
   font-weight: 300;
   letter-spacing: 0.2px;
 }
-[role="main"] {
+[role='main'] {
   padding-top: 65px;
 }
 .preloader {
@@ -558,7 +558,7 @@ footer {
   .sidebar-sticky {
     height: auto;
   }
-  [role="main"] {
+  [role='main'] {
     padding-top: 0;
   }
   .inner-adjust {
@@ -664,3 +664,38 @@ body .push-right{margin-right:10px;}
 html, body{height:100%;}
 body{margin:0;font-family:Roboto, "Helvetica Neue", sans-serif;}
  */
+
+.trend-type {
+  fill: grey;
+  font-family: sans-serif;
+  font-size: 12px;
+}
+
+.line {
+  fill: none;
+  stroke: #fe0600;
+  stroke-width: 3;
+}
+
+.y1-axis line {
+  stroke: red;
+}
+
+.y1-axis path {
+  stroke: red;
+}
+
+.y1-axis text {
+  fill: red;
+}
+
+.data-circle {
+  fill: red;
+}
+
+.chart-tooltip {
+  background: red;
+  color: white;
+  width: 80px;
+  height: auto;
+}

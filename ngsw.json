@@ -1,0 +1,117 @@
+{
+  "configVersion": 1,
+  "timestamp": 1672916076446,
+  "index": "kaarms_webapp/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "kaarms_webapp/107.c46826631ddb6c48.js",
+        "kaarms_webapp/209.493f2ec9a9883f5c.js",
+        "kaarms_webapp/515.b157e0f9c0db498f.js",
+        "kaarms_webapp/793.2f5f6b62e5a9dbe2.js",
+        "kaarms_webapp/802.c973b5476e31cffe.js",
+        "kaarms_webapp/877.41905c667784a35b.js",
+        "kaarms_webapp/895.3baeef0e04a36d36.js",
+        "kaarms_webapp/997.96f16073d8360301.js",
+        "kaarms_webapp/common.4d01235ade0b3d4f.js",
+        "kaarms_webapp/favicon.ico",
+        "kaarms_webapp/index.html",
+        "kaarms_webapp/main.0d0dd1e8c624b2e7.js",
+        "kaarms_webapp/manifest.webmanifest",
+        "kaarms_webapp/polyfills.90dc875f4e039884.js",
+        "kaarms_webapp/runtime.b721be6c2a1f9983.js",
+        "kaarms_webapp/styles.b16632623cb647f4.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "kaarms_webapp/assets/i18n/en.json",
+        "kaarms_webapp/assets/i18n/fr.json",
+        "kaarms_webapp/assets/i18n/sw.json",
+        "kaarms_webapp/assets/icons/icon-128x128.png",
+        "kaarms_webapp/assets/icons/icon-144x144.png",
+        "kaarms_webapp/assets/icons/icon-152x152.png",
+        "kaarms_webapp/assets/icons/icon-192x192.png",
+        "kaarms_webapp/assets/icons/icon-384x384.png",
+        "kaarms_webapp/assets/icons/icon-512x512.png",
+        "kaarms_webapp/assets/icons/icon-72x72.png",
+        "kaarms_webapp/assets/icons/icon-96x96.png",
+        "kaarms_webapp/assets/images/avatar.png",
+        "kaarms_webapp/assets/images/logo-white.svg",
+        "kaarms_webapp/assets/images/logo.svg",
+        "kaarms_webapp/assets/images/no-student.svg",
+        "kaarms_webapp/assets/images/preloader.gif",
+        "kaarms_webapp/assets/images/user.jpg"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "kaarms_webapp/107.c46826631ddb6c48.js": "b7b847a35d8d80110f33066e8f5267ffe5d19050",
+    "kaarms_webapp/209.493f2ec9a9883f5c.js": "17820885378ab86190b5824c7469a7940cfc52b6",
+    "kaarms_webapp/515.b157e0f9c0db498f.js": "7249447466f7103bdae9ded5db78709f0654cecd",
+    "kaarms_webapp/793.2f5f6b62e5a9dbe2.js": "703bf99d8b0a7708b717279aaf841e0e4b91203c",
+    "kaarms_webapp/802.c973b5476e31cffe.js": "f7e3069ab0c617e66066fc413f2f5addc0080719",
+    "kaarms_webapp/877.41905c667784a35b.js": "f0631a3d52bfe3c14b5c332ef11b8997d37bd21f",
+    "kaarms_webapp/895.3baeef0e04a36d36.js": "9ce7dae9a3cf0089527939873a2938c871ef2fa6",
+    "kaarms_webapp/997.96f16073d8360301.js": "e44b5efbd23923de15716267a24ff095a969f307",
+    "kaarms_webapp/assets/i18n/en.json": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+    "kaarms_webapp/assets/i18n/fr.json": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+    "kaarms_webapp/assets/i18n/sw.json": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+    "kaarms_webapp/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "kaarms_webapp/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "kaarms_webapp/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "kaarms_webapp/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "kaarms_webapp/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "kaarms_webapp/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "kaarms_webapp/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "kaarms_webapp/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "kaarms_webapp/assets/images/avatar.png": "b825f0d69c0ce92a121fa6fb64b2d77709f0c43d",
+    "kaarms_webapp/assets/images/logo-white.svg": "3435c80c2d44a86cd4e4200a219665e82e553195",
+    "kaarms_webapp/assets/images/logo.svg": "255a3fb20e25a6f42cde1b9c08be22d33f53cad0",
+    "kaarms_webapp/assets/images/no-student.svg": "4d125f2c20d25dd892119fe0a23eb042701bf06c",
+    "kaarms_webapp/assets/images/preloader.gif": "4e1baf351d69d56b516800ac0f80da593c2f2480",
+    "kaarms_webapp/assets/images/user.jpg": "985116d851463c31a210885c9bda2bbf3d805305",
+    "kaarms_webapp/common.4d01235ade0b3d4f.js": "b2fdbfbd1053730e18e7b9dc6a41d5789af421b4",
+    "kaarms_webapp/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
+    "kaarms_webapp/index.html": "833ca31b65e23377fe8df849fcd9bc693e966736",
+    "kaarms_webapp/main.0d0dd1e8c624b2e7.js": "ce0e6eb1162ff218f6192d292549beb5e83f5e0a",
+    "kaarms_webapp/manifest.webmanifest": "e258d257287bfa61f36697e2589777bfb64029fd",
+    "kaarms_webapp/polyfills.90dc875f4e039884.js": "48e9add8c23664969a2edcf7b588f0691a425bb0",
+    "kaarms_webapp/runtime.b721be6c2a1f9983.js": "e63e5325b69a4ec416b7b98e5edda7127430dbf7",
+    "kaarms_webapp/styles.b16632623cb647f4.css": "c5fe54817f9ae1dd03e603fe342d85e910a6e318"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}

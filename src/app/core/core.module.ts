@@ -4,7 +4,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { SharedModule } from '@shared/shared.module';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { RouterLink } from '@angular/router';
+import { RouteReuseStrategy, RouterLink } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CoreRoutingModule } from '@core/core-routing.module';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -17,6 +17,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AuthModule } from '@auth/auth.module';
 import { authInterceptorProviders } from '@auth/interceptors';
 import { AboutComponent } from './components/about/about.component';
+import { MainStatsComponent } from './components/dashboard/main-stats/main-stats.component';
+import { CustomRouteReuseStrategy } from './strategies/custom-route-reuse.strategy';
 // import {AppModule} from "../app.module";
 
 @NgModule({
@@ -28,6 +30,7 @@ import { AboutComponent } from './components/about/about.component';
     ProfileComponent,
     FooterComponent,
     AboutComponent,
+    MainStatsComponent,
   ],
   exports: [ToolbarComponent, FooterComponent, PageNotFoundComponent],
   imports: [
@@ -51,6 +54,10 @@ import { AboutComponent } from './components/about/about.component';
   providers: [
     // Interceptors
     // ...authInterceptorProviders,
+    {
+      provide: RouteReuseStrategy,
+      useClass: CustomRouteReuseStrategy,
+    },
   ],
 })
 export class CoreModule {

@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from '@core/components/page-not-found/page-not-found.component';
+import { TypedRoute } from '@shared/models/typed-route.model';
 
-const routes: Routes = [
+const routes: TypedRoute[] = [
   {
     path: '',
     loadChildren: () => import('./core/core.module').then(m => m.CoreModule),
@@ -75,3 +76,53 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
+
+/*
+export const APP_ROUTES: TypedRoute[] = [
+  {
+    path: '',
+    loadComponent: () =>
+      import('./login.component').then((m) => m.LoginComponent),
+  },
+  {
+    path: 'no-user',
+    loadComponent: () => import('./dashboard/no-user.component'),
+  },
+  {
+    path: 'enter',
+    canMatch: [HasPermissionGuard],
+    data: {
+      isAdmin: true,
+    },
+    loadComponent: () => import('./dashboard/admin.component'),
+  },
+  {
+    path: 'enter',
+    canMatch: [HasPermissionGuard],
+    data: {
+      roles: ['MANAGER'],
+    },
+    loadComponent: () => import('./dashboard/manager.component'),
+  },
+  {
+    path: 'enter',
+    canMatch: [HasPermissionGuard],
+    data: {
+      roles: ['WRITER', 'READER'],
+    },
+    loadComponent: () => import('./dashboard/writer-reader.component'),
+  },
+  {
+    path: 'enter',
+    canMatch: [HasPermissionGuard],
+    data: {
+      roles: ['CLIENT'],
+    },
+    loadComponent: () => import('./dashboard/client.component'),
+  },
+  {
+    path: 'enter',
+    loadComponent: () => import('./dashboard/everyone.component'),
+  },
+];
+ */

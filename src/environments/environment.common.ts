@@ -6,6 +6,8 @@ export const commonEnv = {
   environmentName: 'development',
   appVersion: `${version}-dev`,
   apiUrl: 'http://localhost:8000/api/',
+  wsEndpoint: 'ws://localhost:8081',
+  reconnectInterval: 2000,
   firebase: {
     projectId: 'kaarms-d20c4',
     appId: '1:437039208173:web:6a7070f0c3eb2a3b915ee4',

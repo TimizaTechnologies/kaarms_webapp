@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, Observable } from 'rxjs';
-import { User } from '../models/user.model';
+import { BehaviorSubject, catchError, map, Observable } from 'rxjs';
+import { Role, User } from '../models/user.model';
 import { environment } from '@environs';
 import { HttpErrorHandler } from '@shared/services/http-error-handler.service';
 
@@ -11,7 +11,27 @@ import { HttpErrorHandler } from '@shared/services/http-error-handler.service';
 export class UsersService {
   private userUrl = `${environment.apiUrl}users`;
 
+  private user = new BehaviorSubject<User | undefined>(undefined);
+  user$ = this.user.asObservable();
+
+  isUserLoggedIn$ = this.user$.pipe(map(Boolean));
+  isAdmin$ = this.user$.pipe(map(user => user?.isAdmin));
+
   constructor(private http: HttpClient, private eh: HttpErrorHandler) {}
+
+  hasAnyRole = (role: Role | Role[]) =>
+    this.user$.pipe(
+      map(user => {
+        if (user?.isAdmin) return true;
+
+        const roles: Role[] = Array.isArray(role) ? role : [role];
+        return roles.length === 0 || user?.roles.some(r => roles.includes(r));
+      })
+    );
+
+  add(user: User) {
+    this.user.next(user);
+  }
 
   createUser(user: User): Observable<User> {
     return this.http

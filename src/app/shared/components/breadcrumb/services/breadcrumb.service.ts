@@ -5,7 +5,7 @@ import {
   Data,
   Router,
 } from '@angular/router';
-import { Breadcrumb } from '@shared/models/breadcrumb.model';
+import { Breadcrumb } from '../models/breadcrumb.model';
 import { BehaviorSubject } from 'rxjs';
 import { filter } from 'rxjs/operators';
 

@@ -27,8 +27,9 @@
       "@shared/*": ["app/shared/*"],
       "@material/*": ["app/material/*"],
       "@modules/*": ["app/modules/*"],
+      "@environs": ["environments/environment"],
       "@angular/core/src/metadata/*": ["./node_modules/@angular/core"],
-      "@environs": ["environments/environment"]
+      "lodash/*": ["node_modules/@types/lodash-es/*"]
     },
     "typeRoots": ["node_modules/@types"]
   },

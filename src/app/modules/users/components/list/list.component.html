@@ -1,1 +1,15 @@
-<p>list works!</p>
+<h1>Fake Todos</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let todo of users$ | async">
+      <th scope="row">{{ todo.id }}</th>
+      <td>{{ todo.name }}</td>
+    </tr>
+  </tbody>
+</table>

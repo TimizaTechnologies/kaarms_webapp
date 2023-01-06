@@ -7,8 +7,6 @@ import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.com
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { MaterialModule } from '@material/material.module';
 import { FluidHeightDirective } from './directives/fluid-height.directive';
-import { HasRoleDirective } from './directives/has-role.directive';
-import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +15,6 @@ import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.componen
     DynamicFormComponent,
     SpinnerComponent,
     FluidHeightDirective,
-    BreadcrumbComponent,
   ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule, MaterialModule],
   exports: [

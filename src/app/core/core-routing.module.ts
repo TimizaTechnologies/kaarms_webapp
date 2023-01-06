@@ -10,9 +10,16 @@ const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
     canActivate: [AuthGuard],
+    data: { breadcrumb: 'Dashboard' },
   },
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: 'about', component: AboutComponent },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuard],
+    /*data: { title: 'Profile' },*/
+    data: { breadcrumb: 'Profile' },
+  },
+  { path: 'about', component: AboutComponent, data: { breadcrumb: 'About' } },
 ];
 
 @NgModule({

@@ -22,6 +22,7 @@ import {
   StackedChartComponent,
 } from './components/dashboard/main-stats/main-stats.component';
 import { CustomRouteReuseStrategy } from './strategies/custom-route-reuse.strategy';
+import { BreadCrumbModule } from '@shared/components/breadcrumb/breadcrumb.module';
 // import {AppModule} from "../app.module";
 
 @NgModule({
@@ -54,6 +55,7 @@ import { CustomRouteReuseStrategy } from './strategies/custom-route-reuse.strate
 
     // Application
     AuthModule,
+    BreadCrumbModule,
   ],
   providers: [
     // Interceptors

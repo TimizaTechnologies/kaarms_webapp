@@ -26,12 +26,12 @@ import { ToastrModule } from 'ngx-toastr';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { StoreModule } from '@ngrx/store';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
-import { EffectsModule } from '@ngrx/effects';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+// import { StoreModule } from '@ngrx/store';
+// import { StoreRouterConnectingModule } from '@ngrx/router-store';
+// import { EffectsModule } from '@ngrx/effects';
+// import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AuthModule } from '@auth/auth.module';
-import { authInterceptorProviders } from '@auth/interceptors';
+// import { authInterceptorProviders } from '@auth/interceptors';
 
 @NgModule({
   declarations: [AppComponent],
@@ -63,17 +63,17 @@ import { authInterceptorProviders } from '@auth/interceptors';
     }),
 
     // NgRx
-    StoreModule.forRoot({}, {}),
-    StoreRouterConnectingModule.forRoot(),
-    EffectsModule.forRoot([]),
-    StoreDevtoolsModule.instrument({ name: 'Kaa RMS' }),
+    // StoreModule.forRoot({}, {}),
+    // StoreRouterConnectingModule.forRoot(),
+    // EffectsModule.forRoot([]),
+    // StoreDevtoolsModule.instrument({ name: 'Kaa RMS' }),
 
     AuthModule,
   ],
   providers: [
     AuthService,
     // Interceptors
-    ...authInterceptorProviders,
+    // ...authInterceptorProviders,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoadingInterceptor,

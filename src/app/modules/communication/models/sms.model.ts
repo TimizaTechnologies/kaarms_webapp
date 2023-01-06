@@ -1,3 +1,5 @@
-export interface Sms {
-  id: number;
+import { IMessage } from './message.interface';
+
+export interface Sms extends IMessage {
+  additional?: string;
 }

@@ -9,12 +9,12 @@ import { VerifyEmailComponent } from '@auth/components/verify-email/verify-email
 import { ChangePasswordRequestComponent } from '@auth/components/change-password-request/change-password-request.component';
 import { ChangePasswordComponent } from '@auth/components/change-password/change-password.component';
 import { SharedModule } from '@shared/shared.module';
-import { AuthFacade } from '@auth/store/auth.facade';
+/*import { AuthFacade } from '@auth/store/auth.facade';
 import { AuthService, authServiceInitProvider } from '@auth/auth.service';
 import { StoreModule } from '@ngrx/store';
 import { AUTH_FEATURE_KEY, authReducer } from '@auth/store/auth.reducer';
 import { EffectsModule } from '@ngrx/effects';
-import { AuthEffects } from '@auth/store/auth.effects';
+import { AuthEffects } from '@auth/store/auth.effects';*/
 import { RouterModule } from '@angular/router';
 
 @NgModule({
@@ -30,10 +30,10 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     AuthRoutingModule,
     SharedModule,
-    StoreModule.forFeature(AUTH_FEATURE_KEY, authReducer),
-    EffectsModule.forFeature([AuthEffects]),
+    // StoreModule.forFeature(AUTH_FEATURE_KEY, authReducer),
+    // EffectsModule.forFeature([AuthEffects]),
   ],
   exports: [RouterModule],
-  providers: [AuthFacade, AuthService, authServiceInitProvider],
+  // providers: [AuthFacade, AuthService, authServiceInitProvider],
 })
 export class AuthModule {}

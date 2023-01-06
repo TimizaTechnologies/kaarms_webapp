@@ -6,9 +6,9 @@ import { filter, take } from 'rxjs/operators';
 
 import { ConfigService } from '@core/services/config.service';
 import { TokenStorageService } from '@core/services/token-storage.service';
-import * as AuthActions from './store/auth.actions';
+/*import * as AuthActions from './store/auth.actions';
+import * as AuthSelectors from './store/auth.selectors';*/
 import { AuthState, AuthUser, TokenStatus } from './store/auth.models';
-import * as AuthSelectors from './store/auth.selectors';
 
 export interface AccessData {
   token_type: 'Bearer';
@@ -43,7 +43,7 @@ export class AuthService {
    *
    * @returns {Promise<AuthState>}
    */
-  init(): Promise<AuthState> {
+  /*init(): Promise<AuthState> {
     this.store.dispatch(AuthActions.refreshTokenRequest());
 
     const authState$ = this.store.select(AuthSelectors.selectAuth).pipe(
@@ -56,7 +56,7 @@ export class AuthService {
     );
 
     return lastValueFrom(authState$);
-  }
+  }*/
 
   /**
    * Performs a request with user credentials
@@ -121,9 +121,9 @@ export class AuthService {
   }
 }
 
-export const authServiceInitProvider: Provider = {
+/*export const authServiceInitProvider: Provider = {
   provide: APP_INITIALIZER,
   useFactory: (authService: AuthService) => () => authService.init(),
   deps: [AuthService],
   multi: true,
-};
+};*/

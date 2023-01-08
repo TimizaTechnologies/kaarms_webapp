@@ -7,12 +7,14 @@ import {
 import { TenantsComponent } from './tenants.component';
 import { SharedModule } from '@shared/shared.module';
 import { TenantsRoutingModule } from '@modules/tenants/tenants-routing.module';
+import { ListComponent } from './components/list/list.component';
 
 @NgModule({
   declarations: [
     TenantDetailComponent,
     AddInvoiceDialogComponent,
     TenantsComponent,
+    ListComponent,
   ],
   imports: [CommonModule, TenantsRoutingModule, SharedModule],
 })

@@ -6,9 +6,7 @@ import { filter, take } from 'rxjs/operators';
 
 import { ConfigService } from '@core/services/config.service';
 import { TokenStorageService } from '@core/services/token-storage.service';
-/*import * as AuthActions from './store/auth.actions';
-import * as AuthSelectors from './store/auth.selectors';*/
-import { AuthState, AuthUser, TokenStatus } from './store/auth.models';
+import { AuthUser } from './models/user.model';
 
 export interface AccessData {
   token_type: 'Bearer';
@@ -26,7 +24,6 @@ export class AuthService {
   private clientSecret: string;
 
   constructor(
-    private store: Store,
     private http: HttpClient,
     private configService: ConfigService,
     private tokenStorageService: TokenStorageService

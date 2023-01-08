@@ -8,11 +8,6 @@ import { RouteReuseStrategy, RouterLink } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CoreRoutingModule } from '@core/core-routing.module';
 import { ProfileComponent } from './components/profile/profile.component';
-import { StoreModule } from '@ngrx/store';
-import { environment } from '@environs';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { EffectsModule } from '@ngrx/effects';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { FooterComponent } from './components/footer/footer.component';
 import { AuthModule } from '@auth/auth.module';
 import { authInterceptorProviders } from '@auth/interceptors';
@@ -23,6 +18,10 @@ import {
 } from './components/dashboard/main-stats/main-stats.component';
 import { CustomRouteReuseStrategy } from './strategies/custom-route-reuse.strategy';
 import { BreadCrumbModule } from '@shared/components/breadcrumb/breadcrumb.module';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { CoreComponent } from './core.component';
+import { TopbarComponent } from './components/topbar/topbar.component';
 // import {AppModule} from "../app.module";
 
 @NgModule({
@@ -36,6 +35,10 @@ import { BreadCrumbModule } from '@shared/components/breadcrumb/breadcrumb.modul
     AboutComponent,
     MainStatsComponent,
     StackedChartComponent,
+    SidenavComponent,
+    NavbarComponent,
+    CoreComponent,
+    TopbarComponent,
   ],
   exports: [ToolbarComponent, FooterComponent, PageNotFoundComponent],
   imports: [
@@ -43,15 +46,6 @@ import { BreadCrumbModule } from '@shared/components/breadcrumb/breadcrumb.modul
     CoreRoutingModule,
     SharedModule,
     RouterLink,
-
-    /*// NgRx
-    StoreModule.forRoot({}, {}),
-    StoreRouterConnectingModule.forRoot(),
-    EffectsModule.forRoot([]),
-    StoreDevtoolsModule.instrument({ name: 'Kaa RMS' }),*/
-    /*environment.production
-      ? []
-      : StoreDevtoolsModule.instrument({ name: 'Kaa RMS' }),*/
 
     // Application
     AuthModule,

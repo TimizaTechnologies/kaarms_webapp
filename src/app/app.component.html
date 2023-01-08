@@ -1,15 +1,13 @@
 <!--<button (click)="openFullscreen()">Go full screen</button>
 <button (click)="closeFullscreen()">Exit full screen</button>-->
-<mat-icon class="screen" *ngIf="!isFullScreen" (click)="openFullscreen()"
+<!--mat-icon class="screen" *ngIf="!isFullScreen" (click)="openFullscreen()"
   >fullscreen</mat-icon
 >
 <mat-icon class="screen" *ngIf="isFullScreen" (click)="closeFullscreen()"
   >fullscreen_exit</mat-icon
->
-<app-toolbar></app-toolbar>
-<app-breadcrumb></app-breadcrumb>
-<!--<app-header></app-header>-->
+-->
+
 <app-spinner></app-spinner>
-<div class="container">
-  <router-outlet></router-outlet>
-</div>
+
+<router-outlet></router-outlet>
+

@@ -26,11 +26,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-// import { StoreModule } from '@ngrx/store';
-// import { StoreRouterConnectingModule } from '@ngrx/router-store';
-// import { EffectsModule } from '@ngrx/effects';
-// import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AuthModule } from '@auth/auth.module';
+import { DataTablesModule } from 'angular-datatables';
 // import { authInterceptorProviders } from '@auth/interceptors';
 
 @NgModule({
@@ -62,13 +59,8 @@ import { AuthModule } from '@auth/auth.module';
       registrationStrategy: 'registerWhenStable:30000',
     }),
 
-    // NgRx
-    // StoreModule.forRoot({}, {}),
-    // StoreRouterConnectingModule.forRoot(),
-    // EffectsModule.forRoot([]),
-    // StoreDevtoolsModule.instrument({ name: 'Kaa RMS' }),
-
     AuthModule,
+    DataTablesModule,
   ],
   providers: [
     AuthService,

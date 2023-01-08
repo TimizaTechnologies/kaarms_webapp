@@ -8,15 +8,11 @@ import { HttpInterceptor } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { EMPTY, Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { AuthFacade } from '@auth/store/auth.facade';
 import { TokenStorageService } from '@core/services/token-storage.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(
-    private authFacade: AuthFacade,
-    private tokenStorageService: TokenStorageService
-  ) {}
+  constructor(private tokenStorageService: TokenStorageService) {}
 
   intercept(
     request: HttpRequest<unknown>,
@@ -32,7 +28,7 @@ export class AuthInterceptor implements HttpInterceptor {
       });
     }
 
-    return next.handle(request).pipe((s) => this.handleErrors(s, request.url));
+    return next.handle(request).pipe(s => this.handleErrors(s, request.url));
   }
 
   private handleErrors(
@@ -54,7 +50,7 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   private handle401() {
-    this.authFacade.logout();
+    // this.authFacade.logout();
     return EMPTY;
   }
 }

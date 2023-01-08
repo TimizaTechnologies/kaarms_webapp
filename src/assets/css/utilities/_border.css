@@ -1,0 +1,63 @@
+.border-left-primary {
+  border-left: 0.25rem solid #007bff !important;
+}
+
+.border-bottom-primary {
+  border-bottom: 0.25rem solid #007bff !important;
+}
+
+.border-left-secondary {
+  border-left: 0.25rem solid #6c757d !important;
+}
+
+.border-bottom-secondary {
+  border-bottom: 0.25rem solid #6c757d !important;
+}
+
+.border-left-success {
+  border-left: 0.25rem solid #28a745 !important;
+}
+
+.border-bottom-success {
+  border-bottom: 0.25rem solid #28a745 !important;
+}
+
+.border-left-info {
+  border-left: 0.25rem solid #17a2b8 !important;
+}
+
+.border-bottom-info {
+  border-bottom: 0.25rem solid #17a2b8 !important;
+}
+
+.border-left-warning {
+  border-left: 0.25rem solid #ffc107 !important;
+}
+
+.border-bottom-warning {
+  border-bottom: 0.25rem solid #ffc107 !important;
+}
+
+.border-left-danger {
+  border-left: 0.25rem solid #dc3545 !important;
+}
+
+.border-bottom-danger {
+  border-bottom: 0.25rem solid #dc3545 !important;
+}
+
+.border-left-light {
+  border-left: 0.25rem solid #f8f9fa !important;
+}
+
+.border-bottom-light {
+  border-bottom: 0.25rem solid #f8f9fa !important;
+}
+
+.border-left-dark {
+  border-left: 0.25rem solid #343a40 !important;
+}
+
+.border-bottom-dark {
+  border-bottom: 0.25rem solid #343a40 !important;
+}

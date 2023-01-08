@@ -1,0 +1,32 @@
+<!--<app-navbar></app-navbar>
+
+<div id="layoutSidenav">
+  <app-sidenav></app-sidenav>
+  <div id="layoutSidenav_content">
+    <main>
+      <app-breadcrumb></app-breadcrumb>
+      <router-outlet></router-outlet>
+    </main>
+    <app-footer></app-footer>
+  </div>
+</div>-->
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+  <app-sidenav></app-sidenav>
+
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+    <!-- Main Content -->
+    <div id="content">
+      <app-topbar></app-topbar>
+      <!--app-breadcrumb></app-breadcrumb-->
+      <router-outlet></router-outlet>
+    </div>
+    <!-- End of Main Content -->
+
+    <app-footer></app-footer>
+  </div>
+  <!-- End of Content Wrapper -->
+</div>
+<!-- End of Page Wrapper -->

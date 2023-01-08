@@ -1,87 +1,183 @@
-<div class="row" id="login-form">
-  <h2 class="align-center">Login Required</h2>
-  <div class="six columns offset by-three">
-    <form [formGroup]="loginForm">
-      <mat-form-field appearance="outline">
-        <mat-label>Email</mat-label>
-        <input
-          type="email"
-          matInput
-          placeholder="Email"
-          formControlName="email"
-          name="email"
-          required />
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Password</mat-label>
-        <input
-          type="password"
-          matInput
-          placeholder="Password"
-          formControlName="password"
-          name="password"
-          required />
-      </mat-form-field>
-      <button
-        mat-stroked-button
-        (click)="login()"
-        [disabled]="!loginForm.valid">
-        {{ verifyingCredentials ? 'Thinking...' : 'Login' }}
-      </button>
-    </form>
+<!--div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-5">
+      <div class="card shadow-lg border-0 rounded-lg mt-5 mb-5">
+        <div class="card-header">
+          <h3 class="text-center font-weight-light my-4">Login</h3>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="loginForm">
+            <div class="form-floating mb-3">
+              <input
+                class="form-control"
+                id="inputEmail"
+                type="email"
+                formControlName="email"
+                name="email"
+                #email
+                required
+                placeholder="name@example.com" />
+              <label for="inputEmail">Email address</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input
+                class="form-control"
+                id="inputPassword"
+                type="password"
+                formControlName="password"
+                name="password"
+                #password
+                required
+                placeholder="Password" />
+              <label for="inputPassword">Password</label>
+            </div>
+            <div class="form-check mb-3">
+              <input
+                class="form-check-input"
+                id="inputRememberPassword"
+                type="checkbox"
+                value="" />
+              <label class="form-check-label" for="inputRememberPassword"
+                >Remember Password</label
+              >
+            </div>
+            <div
+              class="d-flex align-items-center justify-content-between mt-4 mb-0">
+              <a class="small" routerLink="/accounts/forgot-password"
+                >Forgot Password?</a
+              >
+              <!-(click)="authService.SignIn(email.value, password.value)"->
+              <button
+                (click)="login()"
+                [disabled]="!loginForm.valid"
+                class="btn btn-primary">
+                {{ verifyingCredentials ? 'Logging In...' : 'Login' }}
+              </button>
+            </div>
+          </form>
+
+          <div class="formGroup">
+            <span class="or"><span class="orInner">Or</span></span>
+          </div>
+
+          <!- Calling GoogleAuth Api from AuthService ->
+          <div class="formGroup">
+            <button
+              type="button"
+              class="btn googleBtn"
+              (click)="authService.GoogleAuth()">
+              <i class="fab fa-google-plus-g"></i>
+              Log in with Google
+            </button>
+            <button
+              type="button"
+              class="large-button"
+              (click)="authService.SigninWithGoogle()">
+              <span class="large-button__icon">
+                <svg viewBox="0 0 366 372" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M125.9 10.2c40.2-13.9 85.3-13.6 125.3 1.1 22.2 8.2 42.5 21 59.9 37.1-5.8 6.3-12.1 12.2-18.1 18.3l-34.2 34.2c-11.3-10.8-25.1-19-40.1-23.6-17.6-5.3-36.6-6.1-54.6-2.2-21 4.5-40.5 15.5-55.6 30.9-12.2 12.3-21.4 27.5-27 43.9-20.3-15.8-40.6-31.5-61-47.3 21.5-43 60.1-76.9 105.4-92.4z"
+                    id="Shape"
+                    fill="#EA4335" />
+                  <path
+                    d="M20.6 102.4c20.3 15.8 40.6 31.5 61 47.3-8 23.3-8 49.2 0 72.4-20.3 15.8-40.6 31.6-60.9 47.3C1.9 232.7-3.8 189.6 4.4 149.2c3.3-16.2 8.7-32 16.2-46.8z"
+                    id="Shape"
+                    fill="#FBBC05" />
+                  <path
+                    d="M361.7 151.1c5.8 32.7 4.5 66.8-4.7 98.8-8.5 29.3-24.6 56.5-47.1 77.2l-59.1-45.9c19.5-13.1 33.3-34.3 37.2-57.5H186.6c.1-24.2.1-48.4.1-72.6h175z"
+                    id="Shape"
+                    fill="#4285F4" />
+                  <path
+                    d="M81.4 222.2c7.8 22.9 22.8 43.2 42.6 57.1 12.4 8.7 26.6 14.9 41.4 17.9 14.6 3 29.7 2.6 44.4.1 14.6-2.6 28.7-7.9 41-16.2l59.1 45.9c-21.3 19.7-48 33.1-76.2 39.6-31.2 7.1-64.2 7.3-95.2-1-24.6-6.5-47.7-18.2-67.6-34.1-20.9-16.6-38.3-38-50.4-62 20.3-15.7 40.6-31.5 60.9-47.3z"
+                    fill="#34A853" />
+                </svg>
+              </span>
+              <span class="large-button__text">Sign in with Google</span>
+            </button>
+          </div>
+        </div>
+        <div class="card-footer text-center py-3">
+          <div class="small">
+            <a routerLink="/accounts/register">Need an account? Sign up!</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div-->
+
+<div class="container">
+  <!-- Outer Row -->
+  <div class="row justify-content-center">
+    <div class="col-xl-10 col-lg-12 col-md-9">
+      <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+          <!-- Nested Row within Card Body -->
+          <div class="row">
+            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+            <div class="col-lg-6">
+              <div class="p-5">
+                <div class="text-center">
+                  <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                </div>
+                <form class="user">
+                  <div class="form-group">
+                    <input
+                      type="email"
+                      class="form-control form-control-user"
+                      id="exampleInputEmail"
+                      aria-describedby="emailHelp"
+                      placeholder="Enter Email Address..." />
+                  </div>
+                  <div class="form-group">
+                    <input
+                      type="password"
+                      class="form-control form-control-user"
+                      id="exampleInputPassword"
+                      placeholder="Password" />
+                  </div>
+                  <div class="form-group">
+                    <div class="custom-control custom-checkbox small">
+                      <input
+                        type="checkbox"
+                        class="custom-control-input"
+                        id="customCheck" />
+                      <label class="custom-control-label" for="customCheck"
+                        >Remember Me</label
+                      >
+                    </div>
+                  </div>
+                  <a
+                    href="index.html"
+                    class="btn btn-primary btn-user btn-block">
+                    Login
+                  </a>
+                  <hr />
+                  <a
+                    href="index.html"
+                    class="btn btn-google btn-user btn-block">
+                    <i class="fab fa-google fa-fw"></i> Login with Google
+                  </a>
+                  <a
+                    href="index.html"
+                    class="btn btn-facebook btn-user btn-block">
+                    <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
+                  </a>
+                </form>
+                <hr />
+                <div class="text-center">
+                  <a class="small" href="forgot-password.html"
+                    >Forgot Password?</a
+                  >
+                </div>
+                <div class="text-center">
+                  <a class="small" href="register.html">Create an Account!</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-
-<!--
-<div class="displayTable">
-  <div class="displayTableCell">
-    <div class="authBlock">
-      <h3>Sign In</h3>
-      <div class="formGroup">
-        <input type="text" class="formControl" placeholder="Username" #userName required>
-      </div>
-      <div class="formGroup">
-        <input type="password" class="formControl" placeholder="Password" #userPassword required>
-      </div>
-      <!- Calling SignIn Api from AuthService ->
-<div class="formGroup">
-  <input type="button" class="btn btnPrimary" value="Log in" (click)="authService.SignIn(userName.value, userPassword.value)">
-</div>
-<div class="formGroup">
-  <span class="or"><span class="orInner">Or</span></span>
-</div>
-<!- Calling GoogleAuth Api from AuthService ->
-<div class="formGroup">
-  <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
-    <i class="fab fa-google-plus-g"></i>
-    Log in with Google
-  </button>
-  <button type="button" class="large-button" (click)="authService.SigninWithGoogle()">
-        <span class="large-button__icon">
-          <svg viewBox="0 0 366 372" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M125.9 10.2c40.2-13.9 85.3-13.6 125.3 1.1 22.2 8.2 42.5 21 59.9 37.1-5.8 6.3-12.1 12.2-18.1 18.3l-34.2 34.2c-11.3-10.8-25.1-19-40.1-23.6-17.6-5.3-36.6-6.1-54.6-2.2-21 4.5-40.5 15.5-55.6 30.9-12.2 12.3-21.4 27.5-27 43.9-20.3-15.8-40.6-31.5-61-47.3 21.5-43 60.1-76.9 105.4-92.4z"
-              id="Shape" fill="#EA4335" />
-            <path
-              d="M20.6 102.4c20.3 15.8 40.6 31.5 61 47.3-8 23.3-8 49.2 0 72.4-20.3 15.8-40.6 31.6-60.9 47.3C1.9 232.7-3.8 189.6 4.4 149.2c3.3-16.2 8.7-32 16.2-46.8z"
-              id="Shape" fill="#FBBC05" />
-            <path
-              d="M361.7 151.1c5.8 32.7 4.5 66.8-4.7 98.8-8.5 29.3-24.6 56.5-47.1 77.2l-59.1-45.9c19.5-13.1 33.3-34.3 37.2-57.5H186.6c.1-24.2.1-48.4.1-72.6h175z"
-              id="Shape" fill="#4285F4" />
-            <path
-              d="M81.4 222.2c7.8 22.9 22.8 43.2 42.6 57.1 12.4 8.7 26.6 14.9 41.4 17.9 14.6 3 29.7 2.6 44.4.1 14.6-2.6 28.7-7.9 41-16.2l59.1 45.9c-21.3 19.7-48 33.1-76.2 39.6-31.2 7.1-64.2 7.3-95.2-1-24.6-6.5-47.7-18.2-67.6-34.1-20.9-16.6-38.3-38-50.4-62 20.3-15.7 40.6-31.5 60.9-47.3z"
-              fill="#34A853" /></svg>
-        </span>
-        <span class="large-button__text">Sign in with Google</span>
-      </button>
-</div>
-<div class="forgotPassword">
-  <span routerLink="/forgot-password">Forgot Password?</span>
-</div>
-</div>
-<div class="redirectToLogin">
-  <span>Don't have an account?<span class="redirect" routerLink="/register-user"> Sign Up</span></span>
-</div>
-</div>
-</div>
--->

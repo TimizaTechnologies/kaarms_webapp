@@ -9,29 +9,26 @@ import { AuthService } from '@core/services/auth.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  verifyingCredentials: boolean = false;
+  verifyingCredentials = false;
 
   loginForm = new FormGroup({
     email: new FormControl(),
     password: new FormControl(),
   });
 
-  constructor(
-    public authenticationService: AuthService,
-    private snackBar: MatSnackBar
-  ) {}
+  constructor(public authService: AuthService, private snackBar: MatSnackBar) {}
 
   ngOnInit() {}
 
   logout(): void {
-    this.authenticationService.SignOut();
+    this.authService.SignOut();
   }
 
   login(): void {
     this.verifyingCredentials = true;
-    this.authenticationService
+    this.authService
       .SignIn(this.loginForm.value.email, this.loginForm.value.password)
-      .catch((error) => {
+      .catch(error => {
         this.verifyingCredentials = false;
         this.snackBar.open(error.message, 'OK', { duration: 5000 });
       });

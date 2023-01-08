@@ -1,0 +1,16 @@
+.text-uppercase, .dropdown .dropdown-menu .dropdown-header {
+  text-transform: uppercase !important;
+}
+
+.dropdown .dropdown-menu {
+  font-size: 0.85rem;
+}
+.dropdown .dropdown-menu .dropdown-header {
+  font-weight: 800;
+  font-size: 0.65rem;
+  color: #b7b9cc;
+}
+
+.dropdown.no-arrow .dropdown-toggle::after {
+  display: none;
+}

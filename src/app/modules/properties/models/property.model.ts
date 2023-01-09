@@ -12,13 +12,16 @@ import { User } from '../../users/models/user.model';
  * */
 export interface Property {
   id: number;
-  owner: User;
-  location: string;
+  owner: number;
+  address: number;
+  contact: number;
+  name: string;
   size: number;
   description: string;
   price: number;
-  amenities: string[];
-  photos: string[];
+  amenities?: string;
+  logo: string;
+  photos?: string[];
 }
 
 export interface Book {

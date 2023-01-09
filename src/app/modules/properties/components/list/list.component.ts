@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { Book } from '@modules/properties/models/property.model';
+import { Property } from '@modules/properties/models/property.model';
 import { MatPaginator } from '@angular/material/paginator';
 import { PropertiesService } from '@modules/properties/services/properties.service';
 
@@ -13,45 +13,41 @@ import { PropertiesService } from '@modules/properties/services/properties.servi
   styleUrls: ['./list.component.css'],
 })
 export class ListComponent {
-  dataSource: MatTableDataSource<Book>;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  BookData: any = [];
+  dataSource: MatTableDataSource<Property>;
+  // @ViewChild(MatPaginator) paginator: MatPaginator;
+  properties: any = [];
   displayedColumns: any[] = [
-    '$key',
-    'book_name',
-    'author_name',
-    'publication_date',
-    'in_stock',
+    'id',
+    'logo',
+    'name',
+    'description',
+    'price',
+    'size',
     'action',
   ];
-  constructor(private bookApi: PropertiesService) {
-    this.bookApi
-      .GetBookList()
-      .snapshotChanges()
-      .subscribe((books) => {
-        books.forEach((item) => {
-          let a = item.payload.toJSON();
-          a['$key'] = item.key;
-          this.BookData.push(a as Book);
-        });
-        /* Data table */
-        this.dataSource = new MatTableDataSource(this.BookData);
-        /* Pagination */
-        setTimeout(() => {
-          this.dataSource.paginator = this.paginator;
-        }, 0);
-      });
+
+  constructor(private propertiesService: PropertiesService) {
+    this.propertiesService.getProperties().subscribe(properties => {
+      this.properties = properties.results;
+      /* Data table */
+      this.dataSource = new MatTableDataSource(this.properties);
+      /* Pagination */
+      setTimeout(() => {
+        // this.dataSource.paginator = this.paginator;
+      }, 0);
+    });
   }
+
   /* Delete */
-  deleteBook(index: number, e) {
+  deleteProperty(index: number, e) {
     if (window.confirm('Are you sure?')) {
       const data = this.dataSource.data;
       data.splice(
-        this.paginator.pageIndex * this.paginator.pageSize + index,
+        // this.paginator.pageIndex * this.paginator.pageSize + index,
         1
       );
       this.dataSource.data = data;
-      this.bookApi.DeleteBook(e.$key);
+      this.propertiesService.deleteProperty(e.id);
     }
   }
 }

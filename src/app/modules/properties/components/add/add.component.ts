@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 export interface Language {
   name: string;
 }
+
 @Component({
   selector: 'app-add-property',
   templateUrl: './add.component.html',
@@ -20,10 +21,10 @@ export class AddComponent implements OnInit {
   addOnBlur = true;
   languageArray: Language[] = [];
   @ViewChild('chipList') chipList;
-  @ViewChild('resetBookForm') myNgForm;
+  @ViewChild('resetPropertyForm') myNgForm;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   selectedBindingType: string;
-  bookForm: FormGroup;
+  propertyForm: FormGroup;
   BindingType: any = [
     'Paperback',
     'Case binding',
@@ -32,10 +33,13 @@ export class AddComponent implements OnInit {
     'Spiral binding',
   ];
   ngOnInit() {
-    this.bookApi.GetBookList();
-    this.submitBookForm();
+    this.propertiesService.getProperties();
+    this.submitPropertyForm();
   }
-  constructor(public fb: FormBuilder, private bookApi: PropertiesService) {}
+  constructor(
+    public fb: FormBuilder,
+    private propertiesService: PropertiesService
+  ) {}
   /* Remove dynamic languages */
   remove(language: Language): void {
     const index = this.languageArray.indexOf(language);
@@ -61,9 +65,9 @@ export class AddComponent implements OnInit {
      */
   }
   /* Reactive book form */
-  submitBookForm() {
-    this.bookForm = this.fb.group({
-      book_name: ['', [Validators.required]],
+  submitPropertyForm() {
+    this.propertyForm = this.fb.group({
+      name: ['', [Validators.required]],
       isbn_10: ['', [Validators.required]],
       author_name: ['', [Validators.required]],
       publication_date: ['', [Validators.required]],
@@ -74,7 +78,7 @@ export class AddComponent implements OnInit {
   }
   /* Get errors */
   public handleError = (controlName: string, errorName: string) => {
-    return this.bookForm.controls[controlName].hasError(errorName);
+    return this.propertyForm.controls[controlName].hasError(errorName);
   };
   /* Add dynamic languages */
   add(event: MatChipInputEvent): void {
@@ -92,23 +96,23 @@ export class AddComponent implements OnInit {
   /* Date */
   formatDate(e) {
     const convertDate = new Date(e.target.value).toISOString().substring(0, 10);
-    this.bookForm.get('publication_date').setValue(convertDate, {
+    this.propertyForm.get('publication_date').setValue(convertDate, {
       onlyself: true,
     });
   }
   /* Reset form */
   resetForm() {
     this.languageArray = [];
-    this.bookForm.reset();
-    Object.keys(this.bookForm.controls).forEach(key => {
-      this.bookForm.controls[key].setErrors(null);
+    this.propertyForm.reset();
+    Object.keys(this.propertyForm.controls).forEach(key => {
+      this.propertyForm.controls[key].setErrors(null);
     });
   }
   /* Submit book */
-  submitBook() {
-    if (this.bookForm.valid) {
-      this.bookApi.AddBook(this.bookForm.value);
-      Swal.fire('Hi', 'We have been informed!', 'success');
+  submitProperty() {
+    if (this.propertyForm.valid) {
+      this.propertiesService.createProperty(this.propertyForm.value);
+      Swal.fire('Success', 'Property Added Successfully!', 'success');
       this.resetForm();
     }
   }

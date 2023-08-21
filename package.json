@@ -48,7 +48,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "file-saver": "^2.0.5",
-    "firebase": "^9.15.0",
+    "firebase": "^10.2.0",
     "jasmine-auto-spies": "^6.9.9",
     "jquery": "^3.6.0",
     "jquery.easing": "^1.4.1",
